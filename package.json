@@ -32,8 +32,8 @@
   "scripts": {
     "dev": "./node_modules/.bin/next -p 3002",
     "build": "./node_modules/.bin/next build",
-    "start": "./node_modules/.bin/next start",
-    "serve": "pm2 start ecosystem.config.js"
+    "serve": "./node_modules/.bin/next start",
+    "start": "pm2 start ecosystem.config.js"
   },
   "repository": {
     "type": "git"

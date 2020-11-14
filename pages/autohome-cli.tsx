@@ -9,12 +9,9 @@ export default function Autohome() {
             <Head>
                 <title></title>
                 <link rel="icon" href="/favicon.ico" />
-            </Head>
-            <Nav />
-            <Auto />
-
-            <style jsx global>{`
-                    html,
+                <style>
+                    {
+                        `  html,
                     body,
                     #root {
                     height: 100%;
@@ -199,10 +196,12 @@ export default function Autohome() {
                     font-size: 100%;
                     vertical-align: baseline;
                     background: transparent;
+                    }`
                     }
-                `}
-            </style>
-
+                </style>
+            </Head>
+            <Nav />
+            <Auto />
         </div >
     )
 }
