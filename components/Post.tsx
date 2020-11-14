@@ -6,6 +6,7 @@ export default ({
                     t_desc= '9月，两款备受瞩目的新款车型——奔驰E级(参数|询价)和宝马5系，在万众期待的2020北京车展上接连上市。强强相遇，注定掀起一场波澜。新款国产奔驰E级共推出12款车型，售价区间为43.08-64.28万元；新款宝马5系推出17款车型，售价区间为42.69-60.39万元。',
                     t_img,
                     t_title,
+                    o_url,
 }) =>{
 
     return <div style={{
@@ -17,7 +18,7 @@ export default ({
     >
 
 
-        <img width={60} height={60} src={AVATAR_LIST[o_name]?AVATAR_LIST[o_name]:'/auto-sales-cube.png'} className={'avatar'} />
+        <img src={AVATAR_LIST[o_name]?AVATAR_LIST[o_name]:'/auto-sales-cube.png'} className={'avatar'} />
         <div className={'content'} >
             <div style={{margin: '0 0 5px 0'}}>
                 <div className={'name'}>{o_name}</div>
@@ -25,9 +26,10 @@ export default ({
                 <div className={'time'}>发布时间 {o_ctime}</div>
             </div>
             <div>
-                {
+                <a href={o_url} target={'_blank'}>{
                     '\n'+ t_desc
-                }
+                }</a>
+
             </div>
             <div className={'extraContent'}>
                 <img src={t_img} className={'img'} />
@@ -53,16 +55,18 @@ export default ({
                 border: 1px solid yellow;
                 border-radius: 30px;
                 margin-left:10px;
+                 width:60px;
+                  height:60px;
                 @media only screen
                 and (max-device-width : 768px){
                   margin-left:0px;
-                  border-radius: 25px;
+                  border-radius: 5px;
                   width:50px;
                   height:50px;
                 }
             }
             .extraContent{
-                width: 40vw;
+                width: 44vw;
                 margin: auto;
                 min-height: 5vw;
                 border: 1px solid gray;
@@ -73,7 +77,7 @@ export default ({
                 display: flex;
                 @media only screen
                 and (max-device-width : 768px){
-                  width: 65vw;
+                  width: 75vw;
                 }
                 .img{
                     border-radius: 5px;

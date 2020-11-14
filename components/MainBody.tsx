@@ -11,7 +11,7 @@ export default () => {
     const [list,setList] = useState([])
 
     useEffect(()=>{
-        axios.get('/api/article/list',{
+        axios.get('http://localhost:4000/api/article/list',{
             withCredentials: true,
             headers:{
                 'Access-Control-Allow-Origin': '*'
