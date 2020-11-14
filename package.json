@@ -14,6 +14,7 @@
     "less": "^3.11.1",
     "lodash": "^4.17.20",
     "next": "^9.4.1",
+    "pm2": "^4.5.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scroll-parallax": "^2.3.2",
@@ -31,7 +32,8 @@
   "scripts": {
     "dev": "./node_modules/.bin/next -p 3002",
     "build": "./node_modules/.bin/next build",
-    "start": "./node_modules/.bin/next start"
+    "start": "./node_modules/.bin/next start",
+    "serve": "pm2 start ecosystem.config.js"
   },
   "repository": {
     "type": "git"
