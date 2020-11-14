@@ -44,11 +44,9 @@ export default (props) => {
     const [ active, setActive] = useState('content');
 
     return (<div
-        style={{width:'250px', position:'fixed',height: '100%',borderRight: '1px solid #8080803b'}}
+        className={'container'}
     >
-        <img width='250' src={'/logo.svg'} style={{
-            cursor: 'pointer'
-        }} />
+        <img width='250' src={'/logo.svg'} className={'logo'} />
         {
             [{
                 title:'内容',
@@ -65,21 +63,54 @@ export default (props) => {
             }].map((v,key) => (<div onClick={()=>{
                 setActive(v.key);
             }} className='iconCon' key={key}>
-                <span><v.icon color={'#43e413'}></v.icon></span>
+                <span><v.icon color={active === v.key?'#43e413':'gray'}></v.icon></span>
                 <span className={`title ${active === v.key?'active':''}`}>{v.title}</span>
             </div>))
         }
         <style jsx>{`
+        .container{
+            width:250px;
+            position:fixed;
+            height: 100%;
+            border-right: 1px solid #8080803b;
+            @media only screen
+            and (max-device-width : 768px){
+                background: #6700bdf7;
+                width: 100%;
+                bottom: 0px;
+                height: 80px;
+                flex-direction: row;
+                display: flex;
+              
+            }
+        }
+        .logo{
+        
+            @media only screen and (max-device-width : 768px){
+               display:none;
+              
+            }
+            
+        }
         .iconCon {
             width: 250px;
             padding: 15px 10px;
             display: flex;
             align-items: center;
             justify-content: center;
+            @media only screen
+            and (max-device-width : 768px){
+                
+            }
             .title {
                 font-size:35px;
                 color:white;
                 padding: 0px 10px;
+                @media only screen
+                and (max-device-width : 768px){
+                    display:none;
+                   
+                }
             }
             .active{
                 color:#43e413;
@@ -88,6 +119,11 @@ export default (props) => {
                 background-color: yellow;
                 cursor: pointer;
                 border-radius: 20px;
+                @media only screen
+                and (max-device-width : 768px){
+                    background-color: #ffffff00;
+                    border-radius: 0px;
+                }
                 .title{
                     color: #43e413;
                 }

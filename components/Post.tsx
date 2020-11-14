@@ -1,29 +1,36 @@
 import React from "react";
-
-export default ({name= '车王',
-                    time= '2020-10-28 18:00',
-                    description= '9月，两款备受瞩目的新款车型——奔驰E级(参数|询价)和宝马5系，在万众期待的2020北京车展上接连上市。强强相遇，注定掀起一场波澜。新款国产奔驰E级共推出12款车型，售价区间为43.08-64.28万元；新款宝马5系推出17款车型，售价区间为42.69-60.39万元。'
+import AVATAR_LIST from '../config/CONSTANTS';
+export default ({
+                    o_name= '车王',
+                    o_ctime= '2020-10-28 18:00',
+                    t_desc= '9月，两款备受瞩目的新款车型——奔驰E级(参数|询价)和宝马5系，在万众期待的2020北京车展上接连上市。强强相遇，注定掀起一场波澜。新款国产奔驰E级共推出12款车型，售价区间为43.08-64.28万元；新款宝马5系推出17款车型，售价区间为42.69-60.39万元。',
+                    t_img,
+                    t_title,
 }) =>{
 
-    return <div style={{padding: '10px 23px',width: 'fit-content',
+    return <div style={{
         display: 'flex',
         borderLeft: '1px solid rgba(128, 128, 128, 0.23)',
         borderRight: '1px solid rgba(128, 128, 128, 0.23)',
-        borderBottom: '1px solid rgba(128, 128, 128, 0.23)'}}>
+        borderBottom: '1px solid rgba(128, 128, 128, 0.23)'}}
+        className={'container'}
+    >
 
 
-        <img width={60} height={60} src={'/auto-sales-cube.png'} className={'avatar'} />
+        <img width={60} height={60} src={AVATAR_LIST[o_name]?AVATAR_LIST[o_name]:'/auto-sales-cube.png'} className={'avatar'} />
         <div className={'content'} >
-            <div style={{margin: '0 0 10px 0'}}>
-                <div className={'name'}>{name}</div>
-                <div className={'time'}>时间 {time}</div>
+            <div style={{margin: '0 0 5px 0'}}>
+                <div className={'name'}>{o_name}</div>
+                <div className={'title'}>{t_title}</div>
+                <div className={'time'}>发布时间 {o_ctime}</div>
             </div>
             <div>
                 {
-                    description
+                    '\n'+ t_desc
                 }
             </div>
             <div className={'extraContent'}>
+                <img src={t_img} className={'img'} />
 
             </div>
         </div>
@@ -31,28 +38,65 @@ export default ({name= '车王',
 
 
         <style jsx>{`
+            .container{
+                padding: 10px 23px;
+                width: fit-content;
+                @media only screen
+                and (max-device-width : 768px){
+                  width: 100%;
+                  padding: 10px 10px;
+                }
+            }
+        
             .avatar{
+            
                 border: 1px solid yellow;
                 border-radius: 30px;
                 margin-left:10px;
+                @media only screen
+                and (max-device-width : 768px){
+                  margin-left:0px;
+                  border-radius: 25px;
+                  width:50px;
+                  height:50px;
+                }
             }
             .extraContent{
                 width: 40vw;
                 margin: auto;
-                min-height: 10vw;
+                min-height: 5vw;
                 border: 1px solid gray;
                 border-radius: 5px;
                 background-color: #bfffab;
                 margin-top:10px;
+                align-items: center;
+                display: flex;
+                @media only screen
+                and (max-device-width : 768px){
+                  width: 65vw;
+                }
+                .img{
+                    border-radius: 5px;
+                    width: inherit;
+                    outline: none;
+                    padding: 0;
+                    margin: 0;
+                }
               
             }
             .content{
                 margin: 0px 20px 0px 40px;
                 width:  45vw;
                 color: white;
-                font-size:16px;
-                line-height: 25px;
+                font-size:14px;
+                line-height: 22px;
                 font-weight: 200;
+                @media only screen
+                and (max-device-width : 768px){
+                  width: 100%;
+                  margin: 0px 10px;
+                 
+                }
             }
             .name{
                 color: #43e413;
@@ -60,7 +104,11 @@ export default ({name= '车王',
             }
             .time{
                 color: #f1acd1db;
+                font-size:12px;
+            }
+            .title{
                 font-size:16px;
+                line-height:28px;
             }
          
         `}</style>

@@ -3,6 +3,7 @@ import LeftBody from '../components/LeftBody';
 import RightBody from '../components/RightBody';
 import MainBody from '../components/MainBody';
 export default function Home() {
+
     return (
         <div className="container">
         <Head>
