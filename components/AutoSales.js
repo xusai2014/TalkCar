@@ -1,3 +1,4 @@
+//@ts-nocheck
 import Pagination from '../components/Pagination'
 import BannerPoint from '../components/BannerPoint'
 import DetailButton from '../components/DetailButton'

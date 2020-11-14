@@ -1,3 +1,4 @@
+//@ts-nocheck
 import Head from 'next/head';
 import LeftBody from '../components/LeftBody';
 import RightBody from '../components/RightBody';

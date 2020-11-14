@@ -1,3 +1,4 @@
+//@ts-nocheck
 import Pagination from '../components/Pagination'
 import BannerPoint from '../components/BannerPoint'
 import DetailButton from '../components/DetailButton'
@@ -39,6 +40,7 @@ const Apollo = (props) => {
                         造，提升产品体验，打造产品品牌。<br />
                     </animated.p>
                     <animated.div
+
                         style={{opacity: trail[2].opacity.interpolate(x=>x)}}
                     ><DetailButton href="https://bigdata.autohome.com.cn/autoApollo/assert/#/momentView" /></animated.div>
                 </div>

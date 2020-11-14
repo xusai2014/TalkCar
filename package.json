@@ -34,8 +34,7 @@
     "start": "./node_modules/.bin/next start"
   },
   "repository": {
-    "type": "git",
-    "url": "https://git.corpautohome.com/auto_smart_cloud/FE-Perfect-home.git"
+    "type": "git"
   },
   "author": "",
   "license": "ISC"
