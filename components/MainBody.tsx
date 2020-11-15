@@ -1,28 +1,79 @@
 //@ts-nocheck
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
 import Publish from "./Publish";
 import Post from './Post';
 import axios from 'axios';
 import AVATAR_LIST from "../config/CONSTANTS";
+import LoadingData from '../components/LoadingData';
+import _ from 'lodash';
 
 export default () => {
 
     const version = 1;
-    const [list,setList] = useState([])
+    const [list,setList] = useState([]);
 
-    useEffect(()=>{
-        axios.get('/api/article/list',{
+
+
+
+
+    function getMore() {
+        axios.get(`http://localhost:4000/api/article/list/page?page=${list.length/20+1}`,{
             withCredentials: true,
             headers:{
                 'Access-Control-Allow-Origin': '*'
             }
         }).then((result)=>{
-            setList(result.data.data)
+            if(result.data){
+                const { articleList, page} = result.data.data;
+                if(list.length/20 < page){
+                    setList(list.concat(articleList));
+                }
+
+            }
         })
+    }
 
+
+    function getScrollTop() {
+        let scrollTop = 0;
+        if (document.documentElement && document.documentElement.scrollTop) {
+            scrollTop = document.documentElement.scrollTop;
+        } else if (document.body) {
+            scrollTop = document.body.scrollTop;
+        }
+        return scrollTop;
+    }
+     //获取当前可视范围的高度
+     function getClientHeight() {
+        let clientHeight = 0;
+
+        if (document.body.clientHeight && document.documentElement.clientHeight) {
+             clientHeight = (document.body.clientHeight < document.documentElement.clientHeight) ? document.body.clientHeight : document.documentElement.clientHeight;
+        } else {
+            clientHeight = (document.body.clientHeight > document.documentElement.clientHeight) ? document.body.clientHeight : document.documentElement.clientHeight;
+        }
+        return clientHeight;
+    }
+     function getScrollHeight(){
+        return (Math.max(document.body.scrollHeight, document.documentElement.scrollHeight));
+    }
+
+    useEffect(()=>{
+        getMore();
     },[])
+   const debouncedSave =  _.debounce(() => {
+        if(getScrollTop() + getClientHeight() >= getScrollHeight()){
+            getMore();
+        }
+    },500)
+    useEffect(function () {
+        document.body.addEventListener('scroll',debouncedSave);
+        return ()=>{
+            document.body.removeEventListener('scroll',debouncedSave);
+        }
+    },[list])
 
-    return <div className={'container'}>
+    return <div className={'container'} >
         <div style={{
             width: '100%',
             borderBottom: '1px solid #8080803b',
@@ -58,9 +109,10 @@ export default () => {
 
         </div>
         {
+            list.length !== 0?
             list.map((v) => {
                 return <Post {...v}></Post>
-            })
+            }):<LoadingData></LoadingData>
         }
         <div>
         </div>
