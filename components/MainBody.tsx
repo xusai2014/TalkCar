@@ -17,7 +17,7 @@ export default () => {
 
 
     function getMore() {
-        axios.get(`http://localhost:4000/api/article/list/page?page=${list.length/20+1}`,{
+        axios.get(`/api/article/list/page?page=${list.length/20+1}`,{
             withCredentials: true,
             headers:{
                 'Access-Control-Allow-Origin': '*'
