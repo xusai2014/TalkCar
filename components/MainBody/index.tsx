@@ -73,7 +73,6 @@ export default () => {
         <div style={{
             width: '100%',
             borderBottom: '1px solid #8080803b',
-            // position: 'fixed'
         }}>
             {
                 version === 1 ?

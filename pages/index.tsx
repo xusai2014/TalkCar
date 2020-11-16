@@ -1,6 +1,6 @@
 //@ts-nocheck
 import Head from 'next/head';
-import LeftBody from '../components/LeftBody';
+import LeftBody from '../components/LeftBody/index';
 import RightBody from '../components/RightBody';
 import MainBody from '../components/MainBody/index';
 

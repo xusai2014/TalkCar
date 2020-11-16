@@ -1,5 +1,6 @@
 //@ts-nocheck
 import React, {useEffect, useState} from "react";
+import styles from './index.module.less';
 
 const homeSvg =({color= '#1afa29',size})=>
     (<svg t="1605239018631" className="iconFont" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
@@ -45,9 +46,9 @@ export default (props) => {
     const [ active, setActive] = useState('content');
 
     return (<div
-        className={'container'}
+        className={styles.container}
     >
-        <img width='250' height={'184'} src={'/logo.svg'} className={'logo'} />
+        <img width='250' height={'184'} src={'/logo.svg'} className={styles.logo} />
         {
             [{
                 title:'内容',
@@ -63,93 +64,16 @@ export default (props) => {
                 key: 'discover',
             }].map((v,key) => (<div onClick={()=>{
                 setActive(v.key);
-            }} className='iconCon' key={key}>
+            }} className={styles.iconCon} key={key}>
                 <span><v.icon size={50} color={active === v.key?'#43e413':'gray'}></v.icon></span>
-                <span className={`title ${active === v.key?'active':''}`}>{v.title}</span>
+                <span className={`${styles.title} ${active === v.key?styles.active:''}`}>{v.title}</span>
             </div>))
         }
         <style jsx>{`
-        .container{
-            width:250px;
-            position:fixed;
-            height: 100%;
-            border-right: 1px solid #8080803b;
-            @media only screen
-            and (max-device-width : 768px){
-                background: #6700bdf7;
-                width: 100%;
-                bottom: 0px;
-                height: 50px;
-                flex-direction: row;
-                display: flex;
-              
-            }
-        }
-        .logo{
-        
-            @media only screen and (max-device-width : 768px){
-               display:none;
-              
-            }
-            
-        }
-        .iconCon {
-            width: 250px;
-            padding: 15px 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            @media only screen
-            and (max-device-width : 768px){
-                padding: 0px;
-                svg{
-                    height: 20px;
-                }
-            }
-            .title {
-                font-size:35px;
-                color:white;
-                padding: 0px 10px;
-                @media only screen
-                and (max-device-width : 768px){
-                    display:none;
-                   
-                }
-            }
-            .active{
-                color:#43e413;
-            }
-            :hover{
-                background-color: yellow;
-                cursor: pointer;
-                border-radius: 20px;
-                @media only screen
-                and (max-device-width : 768px){
-                    background-color: #ffffff00;
-                    border-radius: 0px;
-                }
-                .title{
-                    color: #43e413;
-                }
-                path {
-                    fill:#43e413;
-                }
-            }
-         
-        }
-        .icon{
-           width: 50px;
-           height: 50px; 
-        }
+      
         `}</style>
         <style jsx global>{`
-            .iconFont{
-                @media only screen
-                and (max-device-width : 768px){
-                    height:30px;
-                  
-                }
-            }
+           
         `}</style>
 
     </div>);
