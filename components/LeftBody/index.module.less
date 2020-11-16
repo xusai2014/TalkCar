@@ -23,12 +23,13 @@
   position: fixed;
   @media only screen
   and (max-device-width : 768px){
-    background: #6700bdf7;
+    background: rgb(103 0 189);
     width: 100%;
     bottom: 0px;
     height: 50px;
     flex-direction: row;
     display: flex;
+    position: fixed;
 
   }
 }
@@ -59,12 +60,15 @@
     color:#43e413;
   }
   &:hover{
-    background-color: yellow;
+    @media only screen
+    and (min-device-width : 768px){
+      background-color: yellow;
+    }
+
     cursor: pointer;
     border-radius: 20px;
     @media only screen
     and (max-device-width : 768px){
-      background-color: #ffffff00;
       border-radius: 0px;
     }
     .title{
