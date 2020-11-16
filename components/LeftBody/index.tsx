@@ -65,15 +65,20 @@ export default ({setLoadStart,loadStart}) => {
                 icon: discoverSvg,
                 key: 'discover',
             }].map((v,key) => (<div onClick={()=>{
-                Router.push('/');
-                setActive(v.key);
+                if(v.key === 'content'){
+                    Router.push('/');
+                    setLoadStart(true);
+                    setActive(v.key);
+                }
+
             }}
-                                    onTouchStartCapture={_.debounce(()=>{
+                                    onTouchStartCapture={_.debounce((e)=>{
+                                        e.stopPropagation();
+                                        e.preventDefault();
                                         if(v.key === 'content'){
-                                            Router.push('/');
                                             document.body.scrollTo(0,0)
-                                            setLoadStart(true);
                                         }
+                                        return true;
 
                                     },500)}
 
@@ -91,7 +96,7 @@ export default ({setLoadStart,loadStart}) => {
            
         `}</style>
         <div className={styles.copyright}>
-            ©2012-2020 北京车唧唧责任有限公司
+            ©2012-2020 北京车唧唧有限责任公司
             <br />
             关于我们
         </div>
