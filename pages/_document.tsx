@@ -1,7 +1,6 @@
 import Document, {Html, Head, Main, NextScript} from 'next/document';
 
 
-
 export default class MyDocument extends Document {
     static async getInitialProps(ctx) {
         const initialProps = await Document.getInitialProps(ctx)
@@ -12,7 +11,7 @@ export default class MyDocument extends Document {
         return (
             <Html>
                 <Head></Head>
-                <body>
+                <body style={{backgroundColor: '#51087b'}}>
                 <Main/>
                 <NextScript/>
                 </body>

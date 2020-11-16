@@ -1,23 +1,19 @@
 //@ts-nocheck
 import React, {useCallback, useEffect, useRef, useState} from 'react';
-import Publish from "./Publish";
-import Post from './Post';
+import Publish from "../Publish";
+import Post from '../Post';
 import axios from 'axios';
-import AVATAR_LIST from "../config/CONSTANTS";
-import LoadingData from '../components/LoadingData';
+import AVATAR_LIST from "../../config/CONSTANTS";
+import LoadingData from '../LoadingData';
 import _ from 'lodash';
+import styles from './index.module.less';
 
 export default () => {
 
     const version = 1;
     const [list,setList] = useState([]);
-
-
-
-
-
     function getMore() {
-        axios.get(`/api/article/list/page?page=${list.length/20+1}`,{
+        axios.get(`http://101.201.153.75/api/article/list/page?page=${list.length/20+1}`,{
             withCredentials: true,
             headers:{
                 'Access-Control-Allow-Origin': '*'
@@ -73,7 +69,7 @@ export default () => {
         }
     },[list])
 
-    return <div className={'container'} >
+    return <div className={styles.container} >
         <div style={{
             width: '100%',
             borderBottom: '1px solid #8080803b',
@@ -117,14 +113,7 @@ export default () => {
         <div>
         </div>
         <style jsx>{`
-        .container{
-            margin-left: 250px;
-            width: 100%;
-            @media only screen
-            and (max-device-width : 768px){
-              margin-left: 0px;
-            }
-        }
+        
         .list{
             display: flex;
             color: white;

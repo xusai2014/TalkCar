@@ -47,7 +47,7 @@ export default (props) => {
     return (<div
         className={'container'}
     >
-        <img width='250' src={'/logo.svg'} className={'logo'} />
+        <img width='250' height={'184'} src={'/logo.svg'} className={'logo'} />
         {
             [{
                 title:'内容',

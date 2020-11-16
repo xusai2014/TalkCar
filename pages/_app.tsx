@@ -1,4 +1,4 @@
-
+import '../style.less';
 import App, {Container} from 'next/app'
 import React from 'react';
 import { ParallaxProvider } from 'react-scroll-parallax';
