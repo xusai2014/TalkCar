@@ -1,7 +1,7 @@
 //@ts-nocheck
 import React, {useCallback, useEffect, useRef, useState} from 'react';
 import Publish from "../Publish";
-import Post from '../Post';
+import Post from '../Post/index';
 import axios from 'axios';
 import AVATAR_LIST from "../../config/CONSTANTS";
 import LoadingData from '../LoadingData';
@@ -106,12 +106,21 @@ export default () => {
             }
 
         </div>
+        <div className={`${styles.loadContainer} ${list.length !== 0?styles.loadFinish:''}`} >
+            <img src={'/loading.gif'}
+                 className={styles.loading}
+            />
+        </div>
         {
-            list.length !== 0 ?
-                list.map((v) => {
-                    return <Post {...v}></Post>
-                }) : <LoadingData></LoadingData>
+
+            list.map((v) => {
+                return <Post {...v}></Post>
+            })
         }
+        {
+            list.length !== 0?<div className={styles.more} onClick={()=>{getMore()}}>加载更多</div>:null
+        }
+
         <div>
         </div>
     </div>
