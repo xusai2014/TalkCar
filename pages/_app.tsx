@@ -1,3 +1,4 @@
+// @ts-nocheck
 import '../style.less';
 import App, {Container} from 'next/app'
 import React, {useState} from 'react';
@@ -15,7 +16,9 @@ export default class MyApp extends App {
 
     render() {
         const {Component, pageProps} = this.props;
+
         return <div>
+
             <LeftBody setLoadStart={(v) => this.setState({loadStart: v})}
                       loadStart={this.state.loadStart}
             >
