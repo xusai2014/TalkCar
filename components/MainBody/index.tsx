@@ -79,12 +79,12 @@ export default () => {
         }}>
             {
                 version === 1 ?
-                    <div className={'list'}>
-                        <span className={'text'}>热门频道</span>
+                    <div className={styles.list}>
+                        <span className={styles.text}>热门频道</span>
                         {
                             Object.keys(AVATAR_LIST).map((key) => {
-                                return (<div className={'item'}>
-                                    <img src={AVATAR_LIST[key]} className={'img'} width={60} height={60}/>
+                                return (<div className={styles.item}>
+                                    <img src={AVATAR_LIST[key]} className={styles.img} width={60} height={60}/>
                                     <span>{key}</span>
                                 </div>)
                             })
