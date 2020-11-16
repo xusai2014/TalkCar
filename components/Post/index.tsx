@@ -10,6 +10,7 @@ export default ({
                     t_img,
                     t_title,
                     o_url,
+                    t_tags,
                 }) => {
 
     return <div style={{
@@ -32,20 +33,16 @@ export default ({
                     '\n' + t_desc
                 }</a>
             </div>
+            <div className={styles.tags}>
+                {
+                    t_tags.map((v)=>{
+                        return v ? <a>{`#${v.trim()}`}</a> : null;
+                    })
+                }
+            </div>
             <div className={styles.extraContent}>
                 <img src={t_img}/>
             </div>
         </div>
-
-
-        <style jsx>{`
-           
-        
-            
-       
-           
-           
-         
-        `}</style>
     </div>
 }
