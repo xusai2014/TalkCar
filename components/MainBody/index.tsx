@@ -1,19 +1,17 @@
 //@ts-nocheck
 import React, {useCallback, useEffect, useRef, useState} from 'react';
-import Publish from "../Publish";
 import Post from '../Post/index';
 import axios from 'axios';
-import AVATAR_LIST from "../../config/CONSTANTS";
 import _ from 'lodash';
 import styles from './index.module.less';
 
-export default ({loadStart,setLoadStart}) => {
 
-    const version = 1;
+export default ({loadStart, setLoadStart, matchParam = {o_name:""}}) => {
+
     const [list, setList] = useState([]);
 
     function getMore() {
-        return axios.get(`http://101.201.153.75/api/article/list/page?page=${list.length / 20 + 1}`, {
+        return axios.get(`/api/article/list/page?page=${list.length / 20 + 1}&o_name=${matchParam.o_name}`, {
             withCredentials: true,
             headers: {
                 'Access-Control-Allow-Origin': '*'
@@ -28,7 +26,6 @@ export default ({loadStart,setLoadStart}) => {
             }
         })
     }
-
 
 
     function getScrollTop() {
@@ -58,8 +55,8 @@ export default ({loadStart,setLoadStart}) => {
     }
 
     useEffect(() => {
-        if(loadStart){
-            getMore().finally(()=>{
+        if (loadStart) {
+            getMore().finally(() => {
                 setLoadStart(false);
             });
         }
@@ -77,41 +74,9 @@ export default ({loadStart,setLoadStart}) => {
         }
     }, [list])
 
-    return <div className={styles.container} >
-        <div style={{
-            width: '100%',
-            borderBottom: '1px solid #8080803b',
-        }}>
-            {
-                version === 1 ?
-                    <div className={styles.list}>
-                        <span className={styles.text}>热门频道</span>
-                        {
-                            Object.keys(AVATAR_LIST).map((key) => {
-                                return (<div className={styles.item}>
-                                    <img src={AVATAR_LIST[key]} className={styles.img} width={60} height={60}/>
-                                    <span>{key}</span>
-                                </div>)
-                            })
-                        }
+    return <div className={styles.container}>
 
-                    </div> :
-                    <div style={{display: 'flex'}}>
-                        <img width={'100'}
-                             height={'100'}
-                             style={{
-                                 borderRadius: '50px',
-                                 padding: '8px 0 0 13px',
-                                 margin: '10px'
-                             }}
-                             src={'/image.jpg'}
-                        />
-                        <Publish></Publish>
-                    </div>
-            }
-
-        </div>
-        <div className={`${styles.loadContainer} ${!loadStart?styles.loadFinish:''}`} >
+        <div className={`${styles.loadContainer} ${!loadStart ? styles.loadFinish : ''}`}>
             <img src={'/loading.gif'}
                  className={styles.loading}
             />
@@ -123,10 +88,9 @@ export default ({loadStart,setLoadStart}) => {
             })
         }
         {
-            list.length !== 0?<div className={styles.more} onClick={()=>{getMore()}}>加载更多</div>:null
+            list.length !== 0 ? <div className={styles.more} onClick={() => {
+                getMore()
+            }}>加载更多</div> : null
         }
-
-        <div>
-        </div>
     </div>
 }

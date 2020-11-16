@@ -15,6 +15,17 @@ export default ({
 
     const [ expand, setExpand] =useState(false);
 
+    const getImgUrl = (o_name)=>{
+        let url = '/auto-sales-cube.png';
+        Object.keys(AVATAR_LIST).map((key)=>{
+            if(AVATAR_LIST[key].name === o_name){
+                url  =  AVATAR_LIST[key].url
+            }
+        })
+        return url;
+
+    }
+
     return <div style={{
                     display: 'flex',
                     borderLeft: '1px solid rgba(128, 128, 128, 0.23)',
@@ -23,7 +34,7 @@ export default ({
                 }}
                 className={styles.container}
         >
-        <img src={AVATAR_LIST[o_name] ? AVATAR_LIST[o_name] : '/auto-sales-cube.png'} className={styles.avatar}/>
+        <img src={getImgUrl(o_name)} className={styles.avatar}/>
         <div className={styles.content}>
             <div style={{margin: '0 0 5px 0'}}>
                 <div className={styles.name}>{o_name}</div>

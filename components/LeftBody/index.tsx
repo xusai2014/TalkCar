@@ -2,6 +2,7 @@
 import React, {useEffect, useState} from "react";
 import styles from './index.module.less';
 import _ from "lodash";
+import Router from "next/router";
 
 const homeSvg =({color= '#1afa29',size})=>
     (<svg t="1605239018631" className="iconFont" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
@@ -64,10 +65,12 @@ export default ({setLoadStart}) => {
                 icon: discoverSvg,
                 key: 'discover',
             }].map((v,key) => (<div onClick={()=>{
+                Router.push('/');
                 setActive(v.key);
             }}
                                     onTouchStartCapture={_.debounce(()=>{
                                         if(v.key === 'content'){
+                                            Router.push('/');
                                             document.body.scrollTo(0,0)
                                             setLoadStart(true);
                                         }
@@ -87,6 +90,11 @@ export default ({setLoadStart}) => {
         <style jsx global>{`
            
         `}</style>
+        <div className={styles.copyright}>
+            ©2012-2020 北京车唧唧责任有限公司
+            <br />
+            关于我们
+        </div>
 
     </div>);
 }
