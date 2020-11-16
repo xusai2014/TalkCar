@@ -11,17 +11,18 @@ import styles from './index.module.less';
 export default () => {
 
     const version = 1;
-    const [list,setList] = useState([]);
+    const [list, setList] = useState([]);
+
     function getMore() {
-        axios.get(`http://101.201.153.75/api/article/list/page?page=${list.length/20+1}`,{
+        axios.get(`http://101.201.153.75/api/article/list/page?page=${list.length / 20 + 1}`, {
             withCredentials: true,
-            headers:{
+            headers: {
                 'Access-Control-Allow-Origin': '*'
             }
-        }).then((result)=>{
-            if(result.data){
-                const { articleList, page} = result.data.data;
-                if(list.length/20 < page){
+        }).then((result) => {
+            if (result.data) {
+                const {articleList, page} = result.data.data;
+                if (list.length / 20 < page) {
                     setList(list.concat(articleList));
                 }
 
@@ -39,37 +40,39 @@ export default () => {
         }
         return scrollTop;
     }
-     //获取当前可视范围的高度
-     function getClientHeight() {
+
+    //获取当前可视范围的高度
+    function getClientHeight() {
         let clientHeight = 0;
 
         if (document.body.clientHeight && document.documentElement.clientHeight) {
-             clientHeight = (document.body.clientHeight < document.documentElement.clientHeight) ? document.body.clientHeight : document.documentElement.clientHeight;
+            clientHeight = (document.body.clientHeight < document.documentElement.clientHeight) ? document.body.clientHeight : document.documentElement.clientHeight;
         } else {
             clientHeight = (document.body.clientHeight > document.documentElement.clientHeight) ? document.body.clientHeight : document.documentElement.clientHeight;
         }
         return clientHeight;
     }
-     function getScrollHeight(){
+
+    function getScrollHeight() {
         return (Math.max(document.body.scrollHeight, document.documentElement.scrollHeight));
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         getMore();
-    },[])
-   const debouncedSave =  _.debounce(() => {
-        if(getScrollTop() + getClientHeight() >= getScrollHeight()){
+    }, [])
+    const debouncedSave = _.debounce(() => {
+        if (getScrollTop() + getClientHeight() >= getScrollHeight()) {
             getMore();
         }
-    },500)
+    }, 500)
     useEffect(function () {
-        document.body.addEventListener('scroll',debouncedSave);
-        return ()=>{
-            document.body.removeEventListener('scroll',debouncedSave);
+        document.body.addEventListener('scroll', debouncedSave);
+        return () => {
+            document.body.removeEventListener('scroll', debouncedSave);
         }
-    },[list])
+    }, [list])
 
-    return <div className={styles.container} >
+    return <div className={styles.container}>
         <div style={{
             width: '100%',
             borderBottom: '1px solid #8080803b',
@@ -79,9 +82,9 @@ export default () => {
                     <div className={'list'}>
                         <span className={'text'}>热门频道</span>
                         {
-                            Object.keys(AVATAR_LIST).map((key)=>{
-                                return (<div className={'item'} >
-                                    <img src={AVATAR_LIST[key]} className={'img'}  width={60} height={60}/>
+                            Object.keys(AVATAR_LIST).map((key) => {
+                                return (<div className={'item'}>
+                                    <img src={AVATAR_LIST[key]} className={'img'} width={60} height={60}/>
                                     <span>{key}</span>
                                 </div>)
                             })
@@ -104,53 +107,12 @@ export default () => {
 
         </div>
         {
-            list.length !== 0?
-            list.map((v) => {
-                return <Post {...v}></Post>
-            }):<LoadingData></LoadingData>
+            list.length !== 0 ?
+                list.map((v) => {
+                    return <Post {...v}></Post>
+                }) : <LoadingData></LoadingData>
         }
         <div>
         </div>
-        <style jsx>{`
-        
-        .list{
-            display: flex;
-            color: white;
-            align-items:center;
-            padding: 0 10px;
-            @media only screen
-            and (max-device-width : 768px){
-                  overflow-x:auto;
-                  width:100vw;
-            }
-            >span{
-                font-size:25px;
-                margin-right:15px;
-                color:yellow;
-                @media only screen
-                and (max-device-width : 768px){
-                  display:none;
-                }
-            }
-            .item{
-                padding:10px;
-                display: flex;
-                flex-direction: column;
-                .img{
-                    border-radius:30px;
-                    background-color:white;
-                }
-                span{
-                    margin-top:10px;
-                    text-align: center;
-                    color: white;
-                    font-size:12px;
-                }
-                
-            }
-        }
-            
-        
-        `}</style>
     </div>
 }
