@@ -38,10 +38,30 @@
       color: #43e413;
       font-size: 16px;
     }
-    .time {
-      color: #f1acd1db;
-      font-size:12px;
+
+    .expand{
+      display: flex;
+      padding-top: 3px;
+      justify-content: space-between;
+      .more{
+        float: left;
+        padding-right: 5px;
+        color: var(--highlight-color);
+        cursor: pointer;
+      }
+      .time {
+        color: yellow;
+        font-size:12px;
+        float: left;
+      }
+
     }
+    .href{
+      color: yellow;
+      margin:0 3px;
+
+    }
+
     .title {
       font-size: 15px;
       line-height: 20px;
@@ -56,7 +76,7 @@
     border: 1px solid gray;
     border-radius: 5px;
     background-color: #bfffab;
-    margin-top:10px;
+    margin-top:5px;
     align-items: center;
     display: flex;
     @media only screen

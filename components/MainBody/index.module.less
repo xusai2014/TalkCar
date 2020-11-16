@@ -56,14 +56,18 @@
 
 }
 .more {
-  height: 80px;
-  text-align: center;
-  color: #e9dede;
-  font-size: 10px;
-  padding: 8px;
-  :hover{
-    color: var(--highlight-color);
+  @media only screen
+  and (max-device-width : 768px){
+    height: 80px;
+    text-align: center;
+    color: #e9dede;
+    font-size: 10px;
+    padding: 8px;
+    :hover{
+      color: var(--highlight-color);
+    }
   }
+
 }
 .loadContainer{
   height: 10vw;

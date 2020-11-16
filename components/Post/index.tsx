@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import AVATAR_LIST from '../../config/CONSTANTS';
 // @ts-ignore
 import styles from './index.module.less';
@@ -13,6 +13,8 @@ export default ({
                     t_tags,
                 }) => {
 
+    const [ expand, setExpand] =useState(false);
+
     return <div style={{
                     display: 'flex',
                     borderLeft: '1px solid rgba(128, 128, 128, 0.23)',
@@ -26,12 +28,21 @@ export default ({
             <div style={{margin: '0 0 5px 0'}}>
                 <div className={styles.name}>{o_name}</div>
                 <div className={styles.title}>{t_title}</div>
-                <div className={styles.time}>发布时间 {o_ctime}</div>
+
             </div>
             <div>
-                <a href={o_url} target={'_blank'}>{
-                    '\n' + t_desc
-                }</a>
+                &nbsp;--&nbsp;{
+                    expand?t_desc:
+                    t_desc.length > 120 ?<>{t_desc.substr(0,120)+" ......"}</>:t_desc
+                }
+            </div>
+            <div className={styles.expand}>
+                <span onClick={(e)=>{
+                    e.stopPropagation();
+                    e.preventDefault();
+                    setExpand(!expand);
+                }} className={styles.more}>{!expand?'查看更多':'收起'}</span>
+                <span className={styles.time}>发布时间 {o_ctime}</span>
             </div>
             <div className={styles.tags}>
                 {
@@ -40,9 +51,11 @@ export default ({
                     })
                 }
             </div>
-            <div className={styles.extraContent}>
+            <a href={o_url} className={styles.href} target={'_blank'}>{o_url.length>30?o_url.substr(0,30)+' ...':o_url}</a>
+            <a href={o_url}  target={'_blank'}><div className={styles.extraContent}>
+
                 <img src={t_img}/>
-            </div>
+            </div></a>
         </div>
     </div>
 }

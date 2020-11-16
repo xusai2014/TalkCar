@@ -4,17 +4,16 @@ import Publish from "../Publish";
 import Post from '../Post/index';
 import axios from 'axios';
 import AVATAR_LIST from "../../config/CONSTANTS";
-import LoadingData from '../LoadingData';
 import _ from 'lodash';
 import styles from './index.module.less';
 
-export default () => {
+export default ({loadStart,setLoadStart}) => {
 
     const version = 1;
     const [list, setList] = useState([]);
 
     function getMore() {
-        axios.get(`http://101.201.153.75/api/article/list/page?page=${list.length / 20 + 1}`, {
+        return axios.get(`http://101.201.153.75/api/article/list/page?page=${list.length / 20 + 1}`, {
             withCredentials: true,
             headers: {
                 'Access-Control-Allow-Origin': '*'
@@ -29,6 +28,7 @@ export default () => {
             }
         })
     }
+
 
 
     function getScrollTop() {
@@ -58,8 +58,13 @@ export default () => {
     }
 
     useEffect(() => {
-        getMore();
-    }, [])
+        if(loadStart){
+            getMore().finally(()=>{
+                setLoadStart(false);
+            });
+        }
+
+    }, [loadStart])
     const debouncedSave = _.debounce(() => {
         if (getScrollTop() + getClientHeight() >= getScrollHeight()) {
             getMore();
@@ -72,7 +77,7 @@ export default () => {
         }
     }, [list])
 
-    return <div className={styles.container}>
+    return <div className={styles.container} >
         <div style={{
             width: '100%',
             borderBottom: '1px solid #8080803b',
@@ -106,7 +111,7 @@ export default () => {
             }
 
         </div>
-        <div className={`${styles.loadContainer} ${list.length !== 0?styles.loadFinish:''}`} >
+        <div className={`${styles.loadContainer} ${!loadStart?styles.loadFinish:''}`} >
             <img src={'/loading.gif'}
                  className={styles.loading}
             />
