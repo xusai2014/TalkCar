@@ -26,9 +26,9 @@ export default function Home({setLoadStart, loadStart}) {
                             <div className={styles.list}>
                                 <span className={styles.text}>热门频道</span>
                                 {
-                                    Object.keys(AVATAR_LIST).map((key) => {
+                                    Object.keys(AVATAR_LIST).map((key,index) => {
 
-                                        return (<div className={styles.item} onClick={() => {
+                                        return (<div key={index} className={styles.item} onClick={() => {
                                             Router.push(`/Personal/${key}`)
                                         }}>
                                             <img src={AVATAR_LIST[key].url} className={styles.img} width={60} height={60}/>

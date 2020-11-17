@@ -83,8 +83,8 @@ export default ({loadStart, setLoadStart, matchParam = {o_name:""}}) => {
         </div>
         {
 
-            list.map((v) => {
-                return <Post {...v}></Post>
+            list.map((v, key) => {
+                return <Post key={key} {...v}></Post>
             })
         }
         {

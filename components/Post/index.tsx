@@ -12,6 +12,8 @@ export default ({
                     t_title,
                     o_url,
                     t_tags,
+                    o_type,
+                    t_video,
                 }) => {
 
     const [ expand, setExpand] =useState(false);
@@ -76,8 +78,16 @@ export default ({
             </div>
             <a href={o_url} className={styles.href} target={'_blank'}>{o_url.length>30?o_url.substr(0,30)+' ...':o_url}</a>
             <a href={o_url}  target={'_blank'}><div className={styles.extraContent}>
+                {
+                    o_type === 'video'?
+                        <video
+                            className={styles.contentBlock}
+                               src={t_video}
+                        ></video>
 
-                <img src={t_img}/>
+                        :<img className={styles.contentBlock} src={t_img}/>
+                }
+
             </div></a>
         </div>
     </div>
