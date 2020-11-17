@@ -1,10 +1,11 @@
 // @ts-nocheck
 import '../style.less';
-import App, {Container} from 'next/app'
+import App, {AppProps, Container} from 'next/app'
 import React, {useState} from 'react';
-import {ParallaxProvider} from 'react-scroll-parallax';
 import LeftBody from "../components/LeftBody";
 import RightBody from "../components/RightBody";
+import Router from "next/router";
+
 
 export default class MyApp extends App {
     constructor(props) {
@@ -13,6 +14,13 @@ export default class MyApp extends App {
             loadStart: true
         }
     }
+
+    componentDidMount() {
+        Router.onRouteChangeStart =  (props) => {
+            this.setState({loadStart:true})
+        }
+    }
+
 
     render() {
         const {Component, pageProps} = this.props;

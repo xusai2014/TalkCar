@@ -19,11 +19,6 @@ export default ({setLoadStart,loadStart}) => {
         }
     })
 
-
-    useEffect(()=>{
-        setLoadStart(true)
-    },[])
-
     return <>
         <Head>
             <title>车唧唧</title>

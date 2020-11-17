@@ -67,7 +67,6 @@ export default ({setLoadStart,loadStart}) => {
             }].map((v,key) => (<div onClick={()=>{
                 if(v.key === 'content'){
                     Router.push('/');
-                    setLoadStart(true);
                     setActive(v.key);
                 }
 
