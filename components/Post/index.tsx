@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import AVATAR_LIST from '../../config/CONSTANTS';
 // @ts-ignore
 import styles from './index.module.less';
+import Router from "next/router";
 
 export default ({
                     o_name = '车王',
@@ -26,33 +27,44 @@ export default ({
 
     }
 
-    return <div style={{
-                    display: 'flex',
-                    borderLeft: '1px solid rgba(128, 128, 128, 0.23)',
-                    borderRight: '1px solid rgba(128, 128, 128, 0.23)',
-                    borderBottom: '1px solid rgba(128, 128, 128, 0.23)'
-                }}
-                className={styles.container}
+    function getKey(o_name){
+        let keyStr = ''
+        Object.keys(AVATAR_LIST).map((key) => {
+            if(AVATAR_LIST[key].name === o_name){
+                keyStr = key;
+            }
+        })
+        return keyStr
+    }
+
+    return <div className={styles.container}
         >
-        <img src={getImgUrl(o_name)} className={styles.avatar}/>
+        <img src={getImgUrl(o_name)} className={styles.avatar}
+             onClick={() => {
+                 Router.push(`/Personal/${getKey(o_name)}`)
+             }}
+        />
         <div className={styles.content}>
             <div style={{margin: '0 0 5px 0'}}>
                 <div className={styles.name}>{o_name}</div>
                 <div className={styles.title}>{t_title}</div>
 
             </div>
-            <div>
-                &nbsp;--&nbsp;{
+            {
+                t_desc?<div>
+                    &nbsp;--&nbsp;{
                     expand?t_desc:
-                    t_desc.length > 120 ?<>{t_desc.substr(0,120)+" ......"}</>:t_desc
+                        t_desc.length > 120 ?<>{t_desc.substr(0,120)+" ......"}</>:t_desc
                 }
-            </div>
+                </div>:null
+            }
+
             <div className={styles.expand}>
                 <span onClick={(e)=>{
                     e.stopPropagation();
                     e.preventDefault();
                     setExpand(!expand);
-                }} className={styles.more}>{!expand?'查看更多':'收起'}</span>
+                }} className={styles.more}>{t_desc?(!expand?'查看更多':'收起'):''}</span>
                 <span className={styles.time}>发布时间 {o_ctime}</span>
             </div>
             <div className={styles.tags}>

@@ -1,13 +1,17 @@
 .container{
   padding: 10px 23px;
   width: fit-content;
+  display: flex;
+  border-left: var(--border-line);
+  border-bottom: var(--border-line);
+  border-right: var(--border-line);
   @media only screen
   and (max-device-width : 768px){
     width: 100%;
     padding: 10px 10px;
   }
   .avatar{
-
+    background: white;
     border: 1px solid yellow;
     border-radius: 30px;
     margin-left:10px;
@@ -99,7 +103,7 @@
     text-overflow: ellipsis;
     overflow: hidden;
     > a{
-      padding: 0px 3px;
+      padding: 1px 3px;
       margin: 2px 5px;
       color: #2b0fe8;
       background-color: var(--highlight-color);

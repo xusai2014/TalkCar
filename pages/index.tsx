@@ -29,7 +29,7 @@ export default function Home({setLoadStart, loadStart}) {
                                     Object.keys(AVATAR_LIST).map((key) => {
 
                                         return (<div className={styles.item} onClick={() => {
-                                            Router.push(`./Personal/${key}`)
+                                            Router.push(`/Personal/${key}`)
                                         }}>
                                             <img src={AVATAR_LIST[key].url} className={styles.img} width={60} height={60}/>
                                             <span>{AVATAR_LIST[key].name}</span>

@@ -11,7 +11,7 @@ export default ({loadStart, setLoadStart, matchParam = {o_name:""}}) => {
     const [list, setList] = useState([]);
 
     function getMore() {
-        return axios.get(`http://101.201.153.75/api/article/list/page?page=${list.length / 20 + 1}&o_name=${matchParam.o_name}`, {
+        return axios.get(`http://localhost:4000/api/article/list/page?page=${list.length / 20 + 1}&o_name=${matchParam.o_name}`, {
             withCredentials: true,
             headers: {
                 'Access-Control-Allow-Origin': '*'

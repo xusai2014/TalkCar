@@ -14,6 +14,8 @@
   img{
     width: 100px;
     height: 60px;
+    background: white;
+
   }
   .info{
     margin: 0px 10px;
@@ -23,12 +25,16 @@
 }
 .short{
   color: white;
-  padding: 0px 10px;
-  font-size: 12px;
-  line-height: 16px;
+  padding: 0px 20px;
+  font-size: 16px;
+  line-height: 22px;
   margin-left: 250px;
+  max-width: 800px;
+  border-bottom: var(--border-line);
   @media only screen
   and (max-device-width : 768px){
+    line-height: 16px;
     margin-left: 0px;
+    font-size: 12px;
   }
 }
