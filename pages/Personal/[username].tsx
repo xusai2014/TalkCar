@@ -36,7 +36,12 @@ export default ({setLoadStart,loadStart}) => {
 
 
         </div>
-        <div className={styles.short}>简介：{item.description}</div>
+        <div className={styles.shortCon}>
+            <div className={styles.short}>
+                简介：{item.description}
+            </div>
+        </div>
+
         <MainBody
             matchParam={{
                 o_name:item.name

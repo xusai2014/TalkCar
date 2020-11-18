@@ -74,6 +74,24 @@ export default ({loadStart, setLoadStart, matchParam = {o_name:""}}) => {
         }
     }, [list])
 
+    useEffect(()=>{
+        // 页面只有一个视频可以播放
+        const videos = document.getElementsByTagName('video');
+        for (let i = videos.length - 1; i >= 0; i--) {
+            (function(){
+                let p = i;
+                videos[p].addEventListener('play',function(){
+                    pauseAll(p);
+                })
+            })()
+        }
+        function pauseAll(index){
+            for (let j = videos.length - 1; j >= 0; j--) {
+                if (j!=index) videos[j].pause();
+            }
+        }
+    })
+
     return <div className={styles.container}>
 
         <div className={`${styles.loadContainer} ${!loadStart ? styles.loadFinish : ''}`}>

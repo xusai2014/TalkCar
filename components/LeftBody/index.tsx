@@ -101,7 +101,7 @@ export default ({setLoadStart, loadStart}) => {
            
         `}</style>
         <div className={styles.copyright}>
-            ©2012-2020 北京车唧唧有限责任公司
+            ©2020-2020 车唧唧工作室
             <br/>
             关于我们
         </div>

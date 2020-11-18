@@ -23,18 +23,27 @@
   }
 
 }
-.short{
-  color: white;
-  padding: 0px 20px;
-  font-size: 16px;
-  line-height: 22px;
-  margin-left: 250px;
-  max-width: 800px;
+.shortCon{
   border-bottom: var(--border-line);
+  margin-left: 250px;
   @media only screen
   and (max-device-width : 768px){
-    line-height: 16px;
     margin-left: 0px;
-    font-size: 12px;
+  }
+  .short{
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    line-height: 22px;
+
+    max-width: 800px;
+
+    @media only screen
+    and (max-device-width : 768px){
+      line-height: 16px;
+      margin-left: 0px;
+      font-size: 12px;
+      max-width: none;
+    }
   }
 }

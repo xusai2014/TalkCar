@@ -82,7 +82,11 @@ export default ({
                     o_type === 'video'?
                         <video
                             className={styles.contentBlock}
-                               src={t_video}
+                            controls={true}
+                            muted={true}
+
+
+                            src={t_video}
                         ></video>
 
                         :<img className={styles.contentBlock} src={t_img}/>
