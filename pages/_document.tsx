@@ -10,7 +10,17 @@ export default class MyDocument extends Document {
     render() {
         return (
             <Html>
-                <Head></Head>
+                <Head>
+                    <script type="text/javascript" dangerouslySetInnerHTML={{__html:`var _hmt = _hmt || [];
+                        (function() {
+                        debugger;
+                        var hm = document.createElement("script");
+                        hm.src = "https://hm.baidu.com/hm.js?266020f07fa1b6ba828cbbcc6eaaab6e";
+                        var s = document.getElementsByTagName("script")[0];
+                        s.parentNode.insertBefore(hm, s);
+                    })();`}}>
+                    </script>
+                </Head>
                 <body style={{backgroundColor: '#51087b'}}>
                 <Main/>
                 <NextScript/>
