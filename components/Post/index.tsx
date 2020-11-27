@@ -5,18 +5,20 @@ import styles from './index.module.less';
 import Router from "next/router";
 
 export default ({
-                    o_name = '车王',
-                    o_ctime = '2020-10-28 18:00',
-                    t_desc = '9月，两款备受瞩目的新款车型——奔驰E级(参数|询价)和宝马5系，在万众期待的2020北京车展上接连上市。强强相遇，注定掀起一场波澜。新款国产奔驰E级共推出12款车型，售价区间为43.08-64.28万元；新款宝马5系推出17款车型，售价区间为42.69-60.39万元。',
+                    o_name = '',
+                    o_ctime = '',
+                    t_desc = '',
                     t_img,
-                    t_title,
-                    o_url,
-                    t_tags,
+                    t_title = '',
+                    o_url = '',
+                    t_tags = [],
                     o_type,
                     t_video,
+                    _id,
+                    single = false
                 }) => {
 
-    const [ expand, setExpand] =useState(false);
+    const [ expand, setExpand] =useState(single);
 
     const getImgUrl = (o_name)=>{
         let url = '/auto-sales-cube.png';
@@ -39,7 +41,8 @@ export default ({
         return keyStr
     }
 
-    return <div className={styles.container}
+
+    return <div className={styles.container} style={{...single ? { border:"none" }:{}}}
         >
         <img src={getImgUrl(o_name)} className={styles.avatar}
              onClick={() => {
@@ -47,13 +50,17 @@ export default ({
              }}
         />
         <div className={styles.content}>
-            <div style={{margin: '0 0 5px 0'}}>
+            <div style={{margin: '0 0 5px 0', cursor: 'pointer'}} onClick={()=>{
+                Router.push(`/post/${_id}`)
+            }}>
                 <div className={styles.name}>{o_name}</div>
                 <div className={styles.title}>{t_title}</div>
 
             </div>
             {
-                t_desc?<div>
+                t_desc?<div style={{cursor: 'pointer'}} onClick={()=>{
+                    Router.push(`/post/${_id}`)
+                }}>
                     &nbsp;--&nbsp;{
                     expand?t_desc:
                         t_desc.length > 120 ?<>{t_desc.substr(0,120)+" ......"}</>:t_desc
