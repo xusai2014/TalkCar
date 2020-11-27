@@ -79,7 +79,7 @@ export default ({
             <div className={styles.tags}>
                 {
                     t_tags.map((v)=>{
-                        return v ? <a>{`#${v.trim()}`}</a> : null;
+                        return v ? <a>{`#${String(v).trim()}`}</a> : null;
                     })
                 }
             </div>
