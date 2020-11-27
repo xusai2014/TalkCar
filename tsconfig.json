@@ -30,7 +30,8 @@
     "isolatedModules": true
   },
   "include": [
-    "pages/**/*"
+    "pages/**/*",
+    "global.d.ts"
   ],
   "nocheck": [
     "components/**/*"
