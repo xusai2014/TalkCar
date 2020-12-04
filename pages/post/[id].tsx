@@ -3,9 +3,13 @@ import axios from "axios";
 import {Server_baseUrl} from "../../config/autoconfig";
 import React, {useEffect, useState} from "react";
 import styles from './style.module.less';
+
 export default ({data}) => {
     // @ts-ignore
-    return <div className={styles.container} ><Post {...data} single={true} /></div>
+    return <div className={styles.container} >
+        <Post {...data} single={true} />
+
+    </div>
 }
 export async function getServerSideProps(context) {
     const { query } = context;

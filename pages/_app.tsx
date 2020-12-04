@@ -5,6 +5,7 @@ import React, {useState} from 'react';
 import LeftBody from "../components/LeftBody";
 import RightBody from "../components/RightBody";
 import Router from "next/router";
+import {Head} from "next/document";
 
 
 export default class MyApp extends App {

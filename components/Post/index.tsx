@@ -3,6 +3,7 @@ import AVATAR_LIST from '../../config/CONSTANTS';
 // @ts-ignore
 import styles from './index.module.less';
 import Router from "next/router";
+import Share from "../Share";
 
 export default ({
                     o_name = '',
@@ -100,6 +101,7 @@ export default ({
                 }
 
             </div></a>
+            <Share description={t_desc} title={t_title} pic={t_img}></Share>
         </div>
     </div>
 }

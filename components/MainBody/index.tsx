@@ -8,6 +8,22 @@ import  {baseUrl} from '../../config/autoconfig';
 export default ({loadStart, setLoadStart, matchParam = {o_name:""}}) => {
 
     const [list, setList] = useState([]);
+    const [videolist, setVideolIst] = useState([]);
+
+    function getVideo() {
+        return axios.get(`${baseUrl}/api/article/videolist`, {
+            withCredentials: true,
+            headers: {
+                'Access-Control-Allow-Origin': '*'
+            }
+        }).then((result) => {
+            debugger;
+            if (result.data) {
+                const {articleList, page} = result.data.data;
+                setVideolIst(articleList);
+            }
+        })
+    }
 
     function getMore() {
 
@@ -90,7 +106,8 @@ export default ({loadStart, setLoadStart, matchParam = {o_name:""}}) => {
                 if (j!=index) videos[j].pause();
             }
         }
-    })
+        getVideo();
+    }, [])
 
     return <div className={styles.container}>
 
@@ -100,8 +117,7 @@ export default ({loadStart, setLoadStart, matchParam = {o_name:""}}) => {
             />
         </div>
         {
-
-            list.map((v, key) => {
+            videolist.concat(list).map((v, key) => {
                 return <Post key={key} {...v}></Post>
             })
         }
