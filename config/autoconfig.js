@@ -100,3 +100,4 @@ export const navList = [
 ]
 
 export const baseUrl = process.env.NODE_ENV === 'development'?'http://localhost:4000':''
+export const Server_baseUrl = process.env.NODE_ENV === 'development'?'http://localhost:4000':'http://localhost:4000'
