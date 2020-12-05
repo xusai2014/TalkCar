@@ -30,7 +30,7 @@ export function shareFunc(wx, {
                 'updateAppMessageShareData',
                 'updateTimelineShareData'
             ], // 必填，需要使用的JS接口列表
-            openTagList: ['wx-open-launch-app']
+            openTagList: []
         });
         wx.ready(function () {
             wx.checkJsApi({
