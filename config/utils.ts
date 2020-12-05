@@ -53,7 +53,8 @@ export function shareFunc(wx, {
                           // 设置成功
                         }
                     })
-                } else if(res.checkResult.onMenuShareAppMessage){
+                } 
+                if(res.checkResult.onMenuShareAppMessage){
                     console.log('onMenuShareAppMessage----初始化');
                     wx.onMenuShareAppMessage({
                         title,
@@ -66,7 +67,8 @@ export function shareFunc(wx, {
                           // 用户点击了分享后执行的回调函数
                         }
                       });
-                } else if(res.checkResult.onMenuShareTimeline) {
+                } 
+                if(res.checkResult.onMenuShareTimeline) {
                     console.log('onMenuShareTimeline----初始化');
                     wx.onMenuShareTimeline({
                         title,
@@ -77,7 +79,8 @@ export function shareFunc(wx, {
                         }
                     });
 
-                } else if(res.checkResult.updateTimelineShareData) {
+                } 
+                if(res.checkResult.updateTimelineShareData) {
                     console.log('updateTimelineShareData----初始化');
                     wx.updateTimelineShareData({
                         title,
