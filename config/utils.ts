@@ -43,6 +43,7 @@ export function shareFunc(wx, {
               success: function(res) {
                 console.log('checkJsApi:', res);
                 if(res.checkResult.updateAppMessageShareData) {
+                    console.log('updateAppMessageShareData----初始化');
                     wx.updateAppMessageShareData({ 
                         title,
                         desc:desc?desc:'精彩内容不容错过！',
@@ -66,7 +67,7 @@ export function shareFunc(wx, {
                         }
                       });
                 } else if(res.checkResult.onMenuShareTimeline) {
-                    console.log('onMenuShareAppMessage----初始化');
+                    console.log('onMenuShareTimeline----初始化');
                     wx.onMenuShareTimeline({
                         title,
                         link,
@@ -77,6 +78,7 @@ export function shareFunc(wx, {
                     });
 
                 } else if(res.checkResult.updateTimelineShareData) {
+                    console.log('updateTimelineShareData----初始化');
                     wx.updateTimelineShareData({
                         title,
                         link,
