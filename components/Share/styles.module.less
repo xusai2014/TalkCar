@@ -1,6 +1,5 @@
 .bg {
   display: flex;
-  border-top: var(--border-line);
   padding-top: 5px;
   margin-top: 20px;
   align-items: center;
@@ -23,6 +22,10 @@
   color: var(--highlight-color);
   cursor: pointer;
   margin-right: 10px;
+  @media only screen and (max-device-width : 768px){
+    font-size: 15px;
+
+  }
 }
 .post {
   font-size: 18px;
@@ -30,4 +33,16 @@
   line-height: 18px;
   padding-top: 5px;
   color: #dfcbcb;
+}
+.span {
+  height: 30px;
+  line-height: 30px;
+  display: inline-flex;
+  align-items: center;
+  @media only screen and (max-device-width : 768px){
+    font-size: 8px;
+    height: 15px;
+    line-height: 15px;
+
+  }
 }
