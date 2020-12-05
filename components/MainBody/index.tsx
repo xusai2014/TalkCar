@@ -106,7 +106,7 @@ export default ({loadStart, setLoadStart, matchParam = {o_name:""}}) => {
                 if (j!=index) videos[j].pause();
             }
         }
-        getVideo();
+        // getVideo();
     }, [])
 
     return <div className={styles.container}>
@@ -117,7 +117,7 @@ export default ({loadStart, setLoadStart, matchParam = {o_name:""}}) => {
             />
         </div>
         {
-            videolist.concat(list).map((v, key) => {
+            list.map((v, key) => {
                 return <Post key={key} {...v}></Post>
             })
         }

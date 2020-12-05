@@ -26,12 +26,12 @@ export default ({description, pic, title}) => {
 
     // @ts-ignore
     return <div onClick={share} className={styles.bg}>
-        <span className={styles.span}>
-            <i id={'weibo'} className={styles.iconfont}>&#xe676;</i>
+        <span id={'weibo'} className={styles.span}>
+            <i  className={styles.iconfont}>&#xe676;</i>
             微博转发
         </span>
-        <span className={styles.span}>
-            <i id={'weixin'} className={styles.iconfont}>&#xe6b8;</i>
+        <span id={'weixin'} className={styles.span}>
+            <i  className={styles.iconfont}>&#xe6b8;</i>
             微信转发
         </span>
     </div>
