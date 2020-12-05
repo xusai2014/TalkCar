@@ -1,6 +1,7 @@
 import React, {useEffect} from "react";
 import Head from "next/head";
 import MainBody from "../../components/MainBody";
+import Header from "../../components/Header";
 // @ts-ignore
 import styles from './style.module.less';
 import CONSTANTS from '../../config/CONSTANTS';
@@ -40,6 +41,7 @@ export default ({setLoadStart,loadStart}) => {
             <meta name={'keywords'} content={'车唧唧,汽车社区,汽车界的小家雀儿,汽车快讯'}/>
             <meta name={'description'} content={'车唧唧口号是汽车社区新势力，欢迎大家来到这里一起唧唧歪歪，有态度、更年轻、有个性的汽车发声根据地'}/>
         </Head>
+        <Header></Header>
         <div className={styles.container}>
 
             <div><img src={item.url} /></div>
