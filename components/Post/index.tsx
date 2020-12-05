@@ -101,7 +101,7 @@ export default ({
                 }
 
             </div></a>
-            <Share link={`/post/${_id}}`} description={t_desc} title={t_title} pic={t_img}></Share>
+            <Share description={t_desc} title={t_title} pic={t_img}></Share>
         </div>
     </div>
 }
