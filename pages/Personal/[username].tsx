@@ -4,7 +4,9 @@ import MainBody from "../../components/MainBody";
 // @ts-ignore
 import styles from './style.module.less';
 import CONSTANTS from '../../config/CONSTANTS';
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
+import { shareFunc } from '../../config/utils';
+
 export default ({setLoadStart,loadStart}) => {
     const router = useRouter()
     const { username ='' } = router.query;
@@ -19,18 +21,16 @@ export default ({setLoadStart,loadStart}) => {
         }
     })
     useEffect(()=>{
-    
-        global.wx.ready(function () {   //需在用户可能点击分享按钮前就先调用
-            global.wx.updateAppMessageShareData({ 
-              title: item.name, // 分享标题
+         // @ts-ignore
+         shareFunc(global.wx, {
+            title: item.name, // 分享标题
               desc: item.description, // 分享描述
               link: window.location.href, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
               imgUrl: item.url, // 分享图标
               success: function () {
                 // 设置成功
               }
-            })
-          });
+        });
     }, [])
 
     return <>

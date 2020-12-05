@@ -8,23 +8,21 @@ import AVATAR_LIST from "../config/CONSTANTS";
 import Router from "next/router";
 import Publish from "../components/Publish";
 import { useEffect } from 'react';
+import { shareFunc } from '../config/utils';
 
 export default function Home({setLoadStart, loadStart}) {
 
     const version = 1;
     useEffect(() => {
-        global.wx.ready(function () {   //需在用户可能点击分享按钮前就先调用
-            global.wx.updateAppMessageShareData({ 
-              title: '车唧唧', // 分享标题
-              desc: '车唧唧口号是汽车社区新势力，欢迎大家来到这里一起唧唧歪歪，有态度、更年轻、有个性的汽车发声根据地', // 分享描述
-              link: window.location.href, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-              imgUrl: `${window.location.origin}/favicon.jpg`, // 分享图标
-              success: function () {
-                // 设置成功
-              }
-            })
-          });
-       
+        shareFunc(global.wx,{
+            title: '车唧唧', // 分享标题
+            desc: '车唧唧口号是汽车社区新势力，欢迎大家来到这里一起唧唧歪歪，有态度、更年轻、有个性的汽车发声根据地', // 分享描述
+            link: window.location.href, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+            imgUrl: `${window.location.origin}/favicon.jpg`, // 分享图标
+            success: function () {
+            // 设置成功
+            }
+        });
     }, [])
     return (
         <>
