@@ -36,6 +36,7 @@ export default class MyApp extends App {
                 jsApiList: ['updateAppMessageShareData',], // 必填，需要使用的JS接口列表
                 openTagList: ['wx-open-launch-app']
             });
+            
 
         })
     }
@@ -46,8 +47,6 @@ export default class MyApp extends App {
             this.setState({loadStart:true});
             this.init();
         }
-       
-
     }
 
 
