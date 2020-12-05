@@ -33,11 +33,28 @@ export default class MyApp extends App {
                 timestamp, // 必填，生成签名的时间戳
                 nonceStr, // 必填，生成签名的随机串
                 signature,// 必填，签名
-                jsApiList: ['updateAppMessageShareData',], // 必填，需要使用的JS接口列表
+                jsApiList: [ 
+                    'checkJsApi',
+                    'onMenuShareAppMessage',
+                    'onMenuShareTimeline',
+                    'updateAppMessageShareData',
+                    'updateTimelineShareData'
+                ], // 必填，需要使用的JS接口列表
                 openTagList: ['wx-open-launch-app']
             });
-            
-
+            wx.ready(function () {
+                wx.checkJsApi({
+                  jsApiList: [
+                    'onMenuShareAppMessage',
+                    'onMenuShareTimeline',
+                    'updateAppMessageShareData',
+                    'updateTimelineShareData'
+                  ], // 需要检测的JS接口列表，所有JS接口列表见附录2,
+                  success: function(res) {
+                    console.log('checkJsApi:', res)
+                  }
+                })
+            }); 
         })
     }
 
