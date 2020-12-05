@@ -65,10 +65,28 @@ export function shareFunc(wx, {
                           // 用户点击了分享后执行的回调函数
                         }
                       });
-                      
-        
+                } else if(res.checkResult.onMenuShareTimeline) {
+                    console.log('onMenuShareAppMessage----初始化');
+                    wx.onMenuShareTimeline({
+                        title,
+                        link,
+                        imgUrl,
+                        success: function () {
+                          // 用户点击了分享后执行的回调函数
+                        }
+                    });
+
+                } else if(res.checkResult.updateTimelineShareData) {
+                    wx.updateTimelineShareData({
+                        title,
+                        link,
+                        imgUrl,
+                        success: function () {
+                          // 用户点击了分享后执行的回调函数
+                        }
+                    });
                 }
-              }
+              } 
             })
         }); 
     
