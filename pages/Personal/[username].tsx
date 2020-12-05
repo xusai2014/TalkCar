@@ -23,7 +23,7 @@ export default ({setLoadStart,loadStart}) => {
     useEffect(()=>{
          // @ts-ignore
          shareFunc(global.wx, {
-            title: item.name, // 分享标题
+            title: `车唧唧-${item.name}频道`, // 分享标题
               desc: item.description, // 分享描述
               link: window.location.href, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
               imgUrl: item.url, // 分享图标
@@ -44,7 +44,9 @@ export default ({setLoadStart,loadStart}) => {
 
             <div><img src={item.url} /></div>
             <div className={styles.info}>
-                {item.name}
+            {
+                `${item.name}频道`
+            }
                 <br />
             </div>
 
