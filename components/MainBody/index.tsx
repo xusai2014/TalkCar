@@ -17,7 +17,7 @@ export default ({loadStart, setLoadStart, matchParam = {o_name:""}}) => {
                 'Access-Control-Allow-Origin': '*'
             }
         }).then((result) => {
-            debugger;
+            
             if (result.data) {
                 const {articleList, page} = result.data.data;
                 setVideolIst(articleList);
