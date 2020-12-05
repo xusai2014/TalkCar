@@ -59,11 +59,13 @@ export default ({setLoadStart,loadStart}) => {
                 简介：{item.description}
             </div>
         </div>
-
+        
+        <div style={{marginBottom: '60px'}}>
         <MainBody
             matchParam={{
                 o_name:item.name
             }}
             setLoadStart={setLoadStart} loadStart={loadStart}></MainBody>
+        </div>    
     </>
 }
