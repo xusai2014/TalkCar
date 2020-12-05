@@ -33,7 +33,8 @@ export default class MyApp extends App {
                 timestamp, // 必填，生成签名的时间戳
                 nonceStr, // 必填，生成签名的随机串
                 signature,// 必填，签名
-                jsApiList: ['updateAppMessageShareData',] // 必填，需要使用的JS接口列表
+                jsApiList: ['updateAppMessageShareData',], // 必填，需要使用的JS接口列表
+                openTagList: ['wx-open-launch-app']
             });
 
         })

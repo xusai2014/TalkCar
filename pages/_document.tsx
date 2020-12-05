@@ -12,6 +12,7 @@ export default class MyDocument extends Document {
         return (
             <Html>
                 <Head>
+                <script src='https://res.wx.qq.com/open/js/jweixin-1.6.0.js' />
                     <script type="text/javascript" dangerouslySetInnerHTML={{__html:`var _hmt = _hmt || [];
                         (function() {
                         var hm = document.createElement("script");
@@ -25,8 +26,8 @@ export default class MyDocument extends Document {
                 <body style={{backgroundColor: '#51087b'}}>
                 <Main/>
                 <NextScript/>
-                <script src='https://res.wx.qq.com/open/js/jweixin-1.6.0.js' />
-                <script id="-mob-share" src="http://f1.webshare.mob.com/code/mob-share.js?appkey=3184d49693dff"></script>
+            
+                <script id="-mob-share" src="https://f1.webshare.mob.com/code/mob-share.js?appkey=3184d49693dff"></script>
                 </body>
             </Html>
         )
