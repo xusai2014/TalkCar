@@ -53,6 +53,7 @@ export function shareFunc(wx, {
                         }
                     })
                 } else if(res.checkResult.onMenuShareAppMessage){
+                    console.log('onMenuShareAppMessage----初始化')
                     wx.onMenuShareAppMessage({
                         title,
                         desc:desc?desc:'精彩内容不容错过！',
