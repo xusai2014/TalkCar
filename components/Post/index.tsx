@@ -74,7 +74,7 @@ export default ({
                 }
 
             </div></a>
-            <a href={o_url} className={styles.href} target={'_blank'}>来源：{o_url.length>30?o_url.substr(0,30)+' ...':o_url}</a>
+            <a href={o_url} className={styles.href} target={'_blank'}>{o_url.length>30?o_url.substr(0,30)+' ...':o_url}</a>
             {
                 t_desc?<div style={{cursor: 'pointer'}} onClick={()=>{
                     Router.push(`/post/${_id}`)
