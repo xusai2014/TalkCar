@@ -5,7 +5,7 @@ import axios from 'axios';
 import _ from 'lodash';
 import styles from './index.module.less';
 import  {baseUrl} from '../../config/autoconfig';
-export default ({loadStart, setLoadStart, matchParam = {o_name:""}, setShareObj}) => {
+export default ({loadStart, setLoadStart, matchParam = {o_name:""}, setShareObj =()=>{}}) => {
 
     const [list, setList] = useState([]);
     const [videolist, setVideolIst] = useState([]);

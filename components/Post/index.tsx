@@ -17,7 +17,7 @@ export default ({
                     t_video,
                     _id,
                     single = false,
-                    setShareObj
+                    setShareObj =() =>{}
                 }) => {
 
     const [ expand, setExpand] =useState(single);
