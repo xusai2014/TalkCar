@@ -1,6 +1,6 @@
 import styles from './styles.module.less'
 
-export default ({description, pic, title, url}) => {
+export default ({description, pic, title, url, setShareObj =()=>{}}) => {
 
     function share (e) {
         // @ts-ignore
@@ -17,6 +17,13 @@ export default ({description, pic, title, url}) => {
             }
 
         } );
+        // @ts-ignore
+        setShareObj({
+            url: url?`${window.location.origin}${url}`:window.location.href, // 分享链接
+            title, // 分享标题
+            description,
+            pic,
+        })
         const { id } = e.target;
         // @ts-ignore
         const btn = window.mobShare( id );

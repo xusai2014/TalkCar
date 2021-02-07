@@ -17,7 +17,7 @@ export default ({loadStart, setLoadStart, matchParam = {o_name:""}}) => {
                 'Access-Control-Allow-Origin': '*'
             }
         }).then((result) => {
-            
+
             if (result.data) {
                 const {articleList, page} = result.data.data;
                 setVideolIst(articleList);
@@ -118,7 +118,7 @@ export default ({loadStart, setLoadStart, matchParam = {o_name:""}}) => {
         </div>
         {
             list.map((v, key) => {
-                return <Post key={key} {...v}></Post>
+                return <Post setShareObj={setShareObj} key={key} {...v}></Post>
             })
         }
         {

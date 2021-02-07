@@ -2,7 +2,7 @@
 import Head from 'next/head';
 
 import MainBody from '../components/MainBody/index';
-import React from "react";
+import React, {useState} from "react";
 import styles from "../components/MainBody/index.module.less";
 import AVATAR_LIST from "../config/CONSTANTS";
 import Router from "next/router";
@@ -13,12 +13,19 @@ import { shareFunc } from '../config/utils';
 export default function Home({setLoadStart, loadStart}) {
 
     const version = 1;
+    const [ shareObj, setShareObj] = useState();
     useEffect(() => {
+        const {
+            url = window.location.hre,
+            title = '车唧唧-汽车新势力，一起唧唧歪歪！', // 分享标题
+            description = '车唧唧口号是汽车社区新势力，欢迎大家来到这里一起唧唧歪歪，有态度、更年轻、有个性的汽车发声根据地', // 分享描述,
+            pic = `${window.location.origin}/favicon.jpg`, // 分享图标,
+        } = shareObj
         shareFunc(global.wx,{
-            title: '车唧唧-汽车新势力，一起唧唧歪歪！', // 分享标题
-            desc: '车唧唧口号是汽车社区新势力，欢迎大家来到这里一起唧唧歪歪，有态度、更年轻、有个性的汽车发声根据地', // 分享描述
-            link: window.location.href, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-            imgUrl: `${window.location.origin}/favicon.jpg`, // 分享图标
+            title, // 分享标题
+            desc:description, // 分享描述
+            link: url, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+            imgUrl: pic, // 分享图标
             success: function () {
             // 设置成功
             }
@@ -66,7 +73,7 @@ export default function Home({setLoadStart, loadStart}) {
                     }
 
                 </div>
-                <MainBody setLoadStart={setLoadStart} loadStart={loadStart}></MainBody>
+                <MainBody setShareObj={setShareObj} setLoadStart={setLoadStart} loadStart={loadStart}></MainBody>
             </div>
 
         </>
