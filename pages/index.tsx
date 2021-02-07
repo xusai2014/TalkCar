@@ -13,14 +13,14 @@ import { shareFunc } from '../config/utils';
 export default function Home({setLoadStart, loadStart}) {
 
     const version = 1;
-    const [ shareObj, setShareObj] = useState();
+    const [ shareObj, setShareObj] = useState({});
     useEffect(() => {
         const {
             url = window.location.hre,
             title = '车唧唧-汽车新势力，一起唧唧歪歪！', // 分享标题
             description = '车唧唧口号是汽车社区新势力，欢迎大家来到这里一起唧唧歪歪，有态度、更年轻、有个性的汽车发声根据地', // 分享描述,
             pic = `${window.location.origin}/favicon.jpg`, // 分享图标,
-        } = shareObj
+        } = shareObj;
         shareFunc(global.wx,{
             title, // 分享标题
             desc:description, // 分享描述
@@ -30,7 +30,7 @@ export default function Home({setLoadStart, loadStart}) {
             // 设置成功
             }
         });
-    }, [])
+    }, [shareObj])
     return (
         <>
             <Head>
