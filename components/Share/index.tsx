@@ -1,6 +1,6 @@
 import styles from './styles.module.less'
 
-export default ({description, pic, title}) => {
+export default ({description, pic, title, url}) => {
 
     function share (e) {
         // @ts-ignore
@@ -9,7 +9,7 @@ export default ({description, pic, title}) => {
             appkey: '3184d49693dff', // appkey
 
             params: {
-                url: window.location.href, // 分享链接
+                url: url?`${window.location.origin}${url}`:window.location.href, // 分享链接
                 title, // 分享标题
                 description,
                 pic,
