@@ -9,6 +9,7 @@
     "@types/react-transition-group": "^4.4.0",
     "@zeit/next-less": "^1.0.1",
     "@zeit/next-stylus": "^1.0.1",
+    "animejs": "^3.2.1",
     "antd": "^4.4.0",
     "axios": "^0.21.0",
     "less": "^3.11.1",

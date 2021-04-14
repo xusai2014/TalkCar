@@ -18,7 +18,7 @@ export default class MyApp extends App {
     }
 
     componentDidMount() {
-        
+
         Router.onRouteChangeComplete =  (props) => {
 
             this.setState({loadStart:true});
@@ -27,9 +27,12 @@ export default class MyApp extends App {
 
 
     render() {
-        const {Component, pageProps} = this.props;
+        const {Component, pageProps, router} = this.props;
+        const {
+            asPath
+        } = router;
 
-        return <div>
+        return asPath !== "/page1"?<div>
 
             <LeftBody setLoadStart={(v) => this.setState({loadStart: v})}
                       loadStart={this.state.loadStart}
@@ -42,6 +45,6 @@ export default class MyApp extends App {
                 {...pageProps} />
             <RightBody
             ></RightBody>
-        </div>
+        </div>:<Component></Component>
     }
 }
