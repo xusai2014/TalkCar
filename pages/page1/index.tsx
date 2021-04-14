@@ -6,6 +6,7 @@ const page1 = () => {
     const ref = useRef();
     const subref = useRef();
     function start(e) {
+        // @ts-ignore
         ref.current.play()
     }
     useEffect(()=>{
@@ -37,9 +38,12 @@ const page1 = () => {
     },[])
 
     function showBtn() {
+        // @ts-ignore
         document.querySelector('.animation-fixed').style.display = 'flex';
+        // @ts-ignore
         ref.current.pause();
         if(subref.current){
+            // @ts-ignore
             subref.current.play();
         } else {
             subref.current = anime({
@@ -54,7 +58,9 @@ const page1 = () => {
 
     }
     function addQIaoduan() {
+        // @ts-ignore
         ref.current.children[1].finished.then((data)=>{
+            // @ts-ignore
             ref.current.pause()
         });
     }
@@ -75,13 +81,17 @@ const page1 = () => {
         </div>
         <div className={`${styles.fixed} animation-fixed`}>
             <button onClick={()=>{
+                // @ts-ignore
                 document.querySelector('.animation-fixed').style.display = 'none';
+                // @ts-ignore
                 ref.current.restart()
                 addQIaoduan()
             }}
             >重新开始</button>
             <button onClick={()=>{
+                // @ts-ignore
                 document.querySelector('.animation-fixed').style.display = 'none';
+                // @ts-ignore
                 ref.current.play()
                 addQIaoduan()
             }}
