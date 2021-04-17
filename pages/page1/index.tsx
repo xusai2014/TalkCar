@@ -2,7 +2,7 @@ import styles from './style.module.less';
 import {useEffect, useRef, useState} from "react";
 import anime from 'animejs';
 // @ts-ignore
-import Head from 'next/Head';
+import Head from "next/head";
 const Page1 =  () => {
     const ref = useRef();
     const subref = useRef();
