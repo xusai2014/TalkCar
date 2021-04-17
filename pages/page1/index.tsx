@@ -23,31 +23,71 @@ const Page1 =  () => {
         }).add({
             targets: '.animation-begin',
             bottom:[-50, 160],
-            duration: 200
+            duration: 300
         }).add({
             targets: '.animation-container',
             translateY: '-100vh',
-            duration: 1000,
+            duration: 3000,
+        }).add({
+            targets: '.animation-img1-1-1',
+            width: '100px',
+            round: 20,
+            easing: 'easeInOutExpo',
+        }).add({
+            targets: '.animation-img1-1-2',
+            width: '320px',
+            round: 20,
+            easing: 'easeInOutExpo',
+
+        }).add({
+            targets: '.animation-img1-1-3',
+            width: '160px',
+            round: 20,
+            easing: 'easeInOutExpo',
+        }).add({
+            targets: '.animation-img1-1-4',
+            width: '120px',
+            round: 20,
+            easing: 'easeInOutExpo',
+        }).add({
+            targets: '.animation-img1-1-5',
+            width: '80px',
+            round: 20,
+            easing: 'easeInOutExpo',
+        }).add({
+            targets: '.animation-img1-1-6',
+            width: '80px',
+            round: 1,
+            easing: 'easeInOutExpo',
+        }).add({
+            targets: '.animation-img1-1-7',
+            width: '140px',
+            round: 20,
+            easing: 'easeInOutExpo',
         }).add({
             targets: '.animation-container',
             translateY: '-200vh',
-            duration: 1000,
+            duration: 3000,
         }).add({
             targets: '.animation-container',
             translateY: '-300vh',
-            duration: 1000,
+            duration: 3000,
         }).add({
             targets: '.animation-container',
             translateY: '-400vh',
-            duration: 1000,
+            duration: 3000,
         }).add({
             targets: '.animation-container',
             translateY: '-500vh',
-            duration: 1000,
+            duration: 3000,
         }).add({
             targets: '.animation-container',
             translateY: '-600vh',
-            duration: 1000,
+            duration: 3000,
+        }).add({
+            targets: '.animation-container',
+            translateY: '-700vh',
+            duration: 3000,
         })
 
 
@@ -83,6 +123,16 @@ const Page1 =  () => {
             // @ts-ignore
             ref.current.pause()
         });
+        // @ts-ignore
+        ref.current.children[12].finished.then((data)=>{
+            // @ts-ignore
+            ref.current.pause()
+        });
+        // @ts-ignore
+        ref.current.children[13].finished.then((data)=>{
+            // @ts-ignore
+            ref.current.pause()
+        });
     }
 
     // @ts-ignore
@@ -111,6 +161,40 @@ const Page1 =  () => {
                             onClick={start}
                     ></button>
                 </div>
+                <div className={`${styles.txt} animation-img1-1`}>
+                    <div className={styles.txt_con}>
+                        <div style={{width: '100vw',height: '10px'}}></div>
+                        <div
+                            style={{width: "0px"}}
+                            className={`${styles.txt_one} animation-img1-1-1`}
+                        >大学毕业后</div>
+                        <div
+                            style={{width: "0px"}}
+                            className={`${styles.txt_one} animation-img1-1-2`}
+                        >我搬进了一所只有几平方米的小公寓</div>
+                        <div
+                            style={{width: "0px"}}
+                            className={`${styles.txt_one} animation-img1-1-3`}
+                        >开始了独居的生活</div>
+                        <div
+                            style={{width: "0px"}}
+                            className={`${styles.txt_one} animation-img1-1-4`}
+                        >自己挑选家具</div>
+                        <div
+                            style={{width: "0px"}}
+                            className={`${styles.txt_one} animation-img1-1-5`}
+                        >调整起居</div>
+                        <div
+                            style={{width: "0px"}}
+                            className={`${styles.txt_one} animation-img1-1-6`}
+                        >努力工作</div>
+                        <div
+                            style={{width: "0px"}}
+                            className={`${styles.txt_one} animation-img1-1-7`}
+                        >学着习惯一个人</div>
+
+                    </div>
+                </div>
 
                 <div className={`${styles.img2} animation-img2`}>
                     <button className={styles.home_special}
@@ -132,6 +216,7 @@ const Page1 =  () => {
                     >
                     </button>
                     <img className={styles.img2_sut} src={'/page1/4.png'} />
+                    <button onClick={start} className={styles.next_special}></button>
                 </div>
                 <div className={`${styles.img2} animation-img5`}>
                     <button
@@ -140,6 +225,7 @@ const Page1 =  () => {
                     >
                     </button>
                     <img src={'/page1/5.png'} />
+                    <button onClick={start} className={styles.next}></button>
                 </div>
                 <div className={`${styles.img2} animation-img6`}>
                     <button className={styles.home}
@@ -148,6 +234,51 @@ const Page1 =  () => {
                     </button>
                     <img  src={'/page1/6.png'} />
                 </div>
+                <div className={`${styles.txt} animation-img7`}>
+                    <button className={styles.home_black}
+                            onClick={()=>showBtn(0)}
+                    >
+                    </button>
+                    <div className={styles.img_list}>
+                        {
+                            [
+                                [
+                                    '/page1/pintu/6-1.png',
+                                    '/page1/pintu/6-2.png',
+                                    '/page1/pintu/6-3.png',
+                                    '/page1/pintu/6-4.png',
+                                ],
+                                [
+                                    '/page1/pintu/6-5.png',
+                                    '/page1/pintu/6-6.png',
+                                    '/page1/pintu/6-7.png',
+                                    '/page1/pintu/6-8.png',
+                                ],
+                                [
+                                    '/page1/pintu/6-9.png',
+                                    '/page1/pintu/6-10.png',
+                                    '/page1/pintu/6-11.png',
+                                    '/page1/pintu/6-12.png',
+                                ],
+                            ].map((item,k)=> {
+                                return <div className={styles.img_list_q}>
+                                    {
+                                        item.map((url, k)=>{
+                                            return <img
+                                                style={{
+                                                    margin: k === 0 ?'0 0.1rem 0.1rem 0':
+                                                        ( k === 1? '0 0 0.1rem 0.1rem':
+                                                                k === 2? '0.1rem 0.1rem 0 0':'0.1rem 0 0 0.1rem'
+                                                        )
+                                                }}
+                                                src={url} />
+                                        })
+                                    }
+                                </div>
+                            })
+                        }
+                    </div>
+                </div>
                 <div className={`${styles.img2} animation-img65`}>
                     <button className={styles.home}
                             onClick={()=>showBtn(0)}
@@ -155,6 +286,7 @@ const Page1 =  () => {
                     </button>
                     <img src={'/page1/6-5.png'} />
                 </div>
+
             </div>
             <div className={`${styles.fixed}  animation-fixed ${fixedV >0?styles.fixed_1:''}`}>
                 <button
