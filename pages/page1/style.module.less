@@ -6,12 +6,43 @@
 }
 
 .home {
+  border: 0;
   position: absolute;
-  right: 10px;
-  top: 10px;
-  width: 90px;
-  height: 30px;
+  right: 0.96rem;
+  top: 0.74rem;
+  width: 0.7rem;
+  height: 0.7rem;
   z-index: 100;
+  background-image: url(/page1/home.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #fff0;
+}
+.home_special {
+  border: 0;
+  position: absolute;
+  right: 0.96rem;
+  bottom: 0.74rem;
+  width: 0.7rem;
+  height: 0.7rem;
+  z-index: 100;
+  background-image: url(/page1/home.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #fff0;
+  transform: rotate(90deg);
+}
+
+.title {
+  width: 10.23rem;
+  height: 2.73rem;
+  display: block;
+  top: 4.42rem;
+  background-image: url(/page1/title.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #fff0;
+  position: absolute;
 }
 
 .img1,.img2 {
@@ -21,11 +52,18 @@
   justify-content: center;
   align-items: center;
   display: flex;
+  position: relative;
   >img{
-    width: 100%;
+    height: 100vh;
   }
   overflow: hidden;
 
+}
+
+.img2_sut {
+  transform: rotate(90deg);
+  width: 100vh;
+  height: initial!important;
 }
 
 
@@ -39,9 +77,46 @@
   align-items: center;
   flex-direction: column;
   display: none;
-  background-color: #342c2c8a;
+  background: rgba(27, 27, 27, 0.62);
+  padding-top: 20.64rem;
 
 }
+.fixed_1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding-top: 0!important;
+}
+.fixed_btn {
+  background-image: url("/page1/border.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #fff0;
+  margin: auto;
+  display: block;
+
+
+  .btn_o {
+    background-color: white;
+    width: 3.72rem;
+    height: auto;
+  }
+}
+.fixed_special {
+  transform: rotate(90deg) !important;
+  display: inline-block;
+  margin-top: auto!important;
+  margin-left: auto!important;
+}
+.fixed_special_1{
+  transform: rotate(90deg) !important;
+  display: inline-block;
+  margin-top: auto!important;
+  margin-left: auto!important;
+  margin-right: -20vh;
+}
+
 .anmation1 {
 
 }
@@ -51,11 +126,16 @@
 }
 
 .btn {
-  width: 100px;
-  height: 50px;
+  width: 4.74rem;
+  height: 2.29rem;
   position: absolute;
   display: block;
-  bottom: 160px;
+  bottom: 3.38rem;
+  background-image: url("/page1/start.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: 0;
+  background-color: #fff0;
 }
 
 
