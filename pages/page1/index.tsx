@@ -6,6 +6,10 @@ import Head from "next/head";
 const Page1 =  () => {
     const ref = useRef();
     const subref = useRef();
+
+    const [messageVal, setMessage] = useState('');
+    const [phoneShow, setPhoneshow] = useState(false);
+    const [closeList, setCloseList] = useState(false);
     function start(e) {
         // @ts-ignore
         ref.current.play()
@@ -88,7 +92,25 @@ const Page1 =  () => {
             targets: '.animation-container',
             translateY: '-700vh',
             duration: 3000,
+        }).add({
+            targets: '.animation-container',
+            translateY: '-800vh',
+            duration: 3000,
         })
+            .add({
+            targets: '.animation-container',
+            translateY: '-900vh',
+            duration: 3000,
+        })
+            .add({
+                targets: '.animation-container',
+                translateY: '-1000vh',
+                duration: 3000,
+            }).add({
+                targets: '.animation-container',
+                translateY: '-1100vh',
+                duration: 3000,
+            })
 
 
         addQIaoduan()
@@ -130,6 +152,11 @@ const Page1 =  () => {
         });
         // @ts-ignore
         ref.current.children[13].finished.then((data)=>{
+            // @ts-ignore
+            ref.current.pause()
+        });
+        // @ts-ignore
+        ref.current.children[17].finished.then((data)=>{
             // @ts-ignore
             ref.current.pause()
         });
@@ -286,11 +313,158 @@ const Page1 =  () => {
                     </button>
                     <img src={'/page1/6-5.png'} />
                 </div>
+                <div className={`${styles.img2} animation-img8`}>
+                    <button className={styles.home}
+                            onClick={()=>showBtn(0)}
+                    >
+                    </button>
+                    <img src={'/page1/7.png'} />
+                    <div className={styles.phone_con}>
+                        <input onFocus={()=> {
+                            debugger;
+                            setPhoneshow(true)
+                            setCloseList(false)
+                        }}/> <button>发送</button>
+                    </div>
+                    <div style={{
+                        ...phoneShow?{
+                            height:'100vh',
+                            opacity: 1,
+                        }:{
+                            height:'0',
+                            opacity: 0
+                        }
+                    }} className={styles.fixed_phone} onClick={(e)=>{
+                        e.preventDefault();
+                        e.stopPropagation();
+                    }}>
+                        <div className={styles.phone_item}>
+                            <div className={styles.header}>
+                                <img src={'/page1/right.png'} onClick={()=>{
+                                    setPhoneshow(false);
+                                    setMessage('')
+                                }}/>
+                                <span>妈妈</span>
+                                <img src={'/page1/home.png'} />
+                            </div>
+                            <div className={styles.phone_body}>
+                                {
+                                    [{
+                                        type: 'mother',
+                                        message: '工作忙不忙？房子看的怎么样了？ 注意休息。'
+                                    },
+                                        ...messageVal?[{
+                                            type: 'my',
+                                            message: messageVal
+                                        }]:[]
+                                    ].map(({type, message})=>{
 
+                                        return <div className={styles.message} style={{...type === 'my'?{justifyContent: 'flex-end'}:{}}}>
+                                            {
+                                                type === 'mother'?
+                                                    <>
+                                                    <img src={`/page1/${type}.png`} style={{marginRight: '0.52rem'}}/>
+                                                    <span>
+                                                        {message}
+                                                    </span>
+                                                    </>:
+                                                    <>
+                                                        <span style={{marginLeft: '1.5rem', textAlign: 'right'}}>{message}</span>
+                                                        <img style={{marginLeft: '0.52rem'}} src={`/page1/${type}.png`} />
+                                                    </>
+
+                                            }
+                                        </div>
+
+                                    })
+                                }
+                            </div>
+
+                            <div className={styles.fixed_list} style={{
+                                ...closeList?{
+                                    display: 'none',
+                                    opacity: '0'
+                            }:{
+                                    display: 'flex',
+                                    opacity: '1'
+                                }
+                            }}>{
+                                [
+                                    '真的很糟糕 😂',
+                                    '知道了，我忙了',
+                                    '挺好的，不用担心。'
+                                ].map((value)=>{
+                                    return <div onClick={()=>{
+                                        setMessage(value)
+                                        setCloseList(true)
+                                    }}>{value}</div>
+                                })
+                            }</div>
+                            {
+                                closeList? <button onClick={start} className={styles.next_phone}></button>: null
+                            }
+
+                        </div>
+                    </div>
+                </div>
+                <div className={`${styles.img2} animation-img9`}>
+                    <button className={styles.home}
+                            onClick={()=>showBtn(0)}
+                    >
+                    </button>
+                    <img  src={'/page1/7-1.png'} />
+                </div>
+                <div className={`${styles.txt} animation-img9-1`}>
+                    <div className={styles.txt_con}>
+                        <div style={{width: '100vw',height: '10px'}}></div>
+                        <div
+                            style={{width: "0px"}}
+                            className={`${styles.txt_one} animation-img1-1-1`}
+                        >成长的过程就是一直在学习     </div>
+                        <div
+                            style={{width: "0px"}}
+                            className={`${styles.txt_one} animation-img1-1-2`}
+                        >一直在丢弃</div>
+                        <div
+                            style={{width: "0px"}}
+                            className={`${styles.txt_one} animation-img1-1-3`}
+                        >从学生使得带进入社会</div>
+                        <div
+                            style={{width: "0px"}}
+                            className={`${styles.txt_one} animation-img1-1-4`}
+                        >身边的每一件事都教会我们</div>
+                        <div
+                            style={{width: "0px"}}
+                            className={`${styles.txt_one} animation-img1-1-5`}
+                        >适应环境生存下来的本领</div>
+                        <div
+                            style={{width: "0px"}}
+                            className={`${styles.txt_one} animation-img1-1-6`}
+                        >我们被赋予的技能</div>
+                    </div>
+                </div>
             </div>
+
             <div className={`${styles.fixed}  animation-fixed ${fixedV >0?styles.fixed_1:''}`}>
                 <button
                     className={`${styles.fixed_btn} ${fixedV >0 ? styles.fixed_special_1:""}`}
+                    onClick={()=>{
+
+                        // @ts-ignore
+                        document.querySelector('.animation-fixed').style.display = 'none';
+                        // @ts-ignore
+                        ref.current.play()
+                        addQIaoduan()
+                    }}
+                >
+                    <div>继续故事</div>
+                </button>
+                <button
+                    style={{
+                        marginTop: '0.64rem'
+                    }}
+                    className={`${styles.fixed_btn} ${fixedV >0 ? styles.fixed_special:""}`}
+
                     onClick={()=>{
                         // @ts-ignore
                         document.querySelector('.animation-fixed').style.display = 'none';
@@ -298,21 +472,11 @@ const Page1 =  () => {
                         ref.current.restart()
                         addQIaoduan()
                     }}
-                ><img className={styles.btn_o} src={'/page1/restart.png'} /></button>
-                <button
-                    style={{
-                        marginTop: '0.64rem'
-                    }}
-                    className={`${styles.fixed_btn} ${fixedV >0 ? styles.fixed_special:""}`}
-                    onClick={()=>{
 
-                    // @ts-ignore
-                    document.querySelector('.animation-fixed').style.display = 'none';
-                    // @ts-ignore
-                    ref.current.play()
-                    addQIaoduan()
-                }}
-                ><img className={styles.btn_o} src={'/page1/continue.png'} /></button>
+
+                ><div>
+                    {fixedV > 0? "返回主页":"重新开始"}
+                </div></button>
             </div>
         </div>
 
