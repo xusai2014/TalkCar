@@ -133,6 +133,7 @@
   font-family: fangmeng;
   font-weight: 400;
   color: #271B12;
+  padding-right: 2.2rem;
 }
 
 .img1, .img2 {
@@ -366,4 +367,72 @@
     border-bottom: 1px solid #fde6d7;
   }
 
+}
+
+.zhong {
+  animation:move 1500ms 0s infinite;
+}
+
+@keyframes move {
+  0%, 65%{
+    -webkit-transform:rotate(0deg);
+    transform:rotate(0deg);
+  }
+  70% {
+    -webkit-transform:rotate(6deg);
+    transform:rotate(6deg);
+  }
+  75% {
+    -webkit-transform:rotate(-6deg);
+    transform:rotate(-6deg);
+  }
+  80% {
+    -webkit-transform:rotate(6deg);
+    transform:rotate(6deg);
+  }
+  85% {
+    -webkit-transform:rotate(-6deg);
+    transform:rotate(-6deg);
+  }
+  90% {
+    -webkit-transform:rotate(6deg);
+    transform:rotate(6deg);
+  }
+  95% {
+    -webkit-transform:rotate(-6deg);
+    transform:rotate(-6deg);
+  }
+  100% {
+    -webkit-transform:rotate(0deg);
+    transform:rotate(0deg);
+  }
+}
+
+.phonels {
+  position: absolute;
+  top: 8rem;
+  left: 3rem;
+  right: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .touxiang {
+    width: 6rem;
+    margin-bottom: 1rem;
+  }
+  .txtK {
+    font-family: fangmeng;
+    font-size: 2rem;
+    margin-bottom: 3rem;
+  }
+  .caozuo {
+    display: flex;
+    width: 8rem;
+    justify-content: space-between;
+     > img {
+       width: 2.63rem;
+       height: 2.63rem;
+     }
+  }
 }
