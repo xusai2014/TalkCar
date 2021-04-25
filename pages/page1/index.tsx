@@ -4,7 +4,7 @@ import {useEffect, useRef, useState} from "react";
 import anime from 'animejs';
 // @ts-ignore
 import Head from "next/head";
-import {typing} from "./lib/typing";
+import {typing} from "../../lib/typing";
 
 const Page1 = () => {
     const ref = useRef();
