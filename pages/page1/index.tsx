@@ -1,3 +1,4 @@
+// @ts-nocheck
 import styles from './style.module.less';
 import {useEffect, useRef, useState} from "react";
 import anime from 'animejs';

@@ -1,3 +1,4 @@
+// @ts-nocheck
 export function typing(contentToWrite, myContent, cb) {
 
     let charIndex = -1;
