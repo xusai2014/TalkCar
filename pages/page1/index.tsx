@@ -351,11 +351,7 @@ const Page1 = () => {
             ref.current.pause()
         });
 
-        // @ts-ignore
-        ref.current.children[20].finished.then((data) => {
-            // @ts-ignore
-            ref.current.pause()
-        });
+
         // @ts-ignore
         ref.current.children[21].finished.then((data) => {
             // @ts-ignore
@@ -366,16 +362,21 @@ const Page1 = () => {
             // @ts-ignore
             ref.current.pause()
         });
+        // @ts-ignore
+        ref.current.children[24].finished.then((data) => {
+            // @ts-ignore
+            ref.current.pause()
+        });
 
 
         // @ts-ignore
-        ref.current.children[25].finished.then((data) => {
+        ref.current.children[26].finished.then((data) => {
             // @ts-ignore
             ref.current.pause()
         });
 
         // @ts-ignore
-        ref.current.children[31].finished.then((data) => {
+        ref.current.children[32].finished.then((data) => {
             // @ts-ignore
             ref.current.pause()
         });
