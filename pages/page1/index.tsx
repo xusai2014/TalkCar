@@ -251,7 +251,7 @@ const Page1 = () => {
             })
             .add({
                 targets: '.animation-container',
-                translateY: '-3500vh',
+                translateY: '-3600vh',
                 duration: 3000,
                 changeComplete: async ()=>{
                     const list = document.getElementById('txt12');
