@@ -12,7 +12,7 @@ const Page1 = () => {
 
     const [messageVal, setMessage] = useState('');
     const [phoneShow, setPhoneshow] = useState(false);
-    const [closeList, setCloseList] = useState(false);
+    const [closeList, setCloseList] = useState(true);
     const [call, setCall] = useState(0);
     const [dialogIndex,setDialogIndex] = useState(0)
     // @ts-ignore
@@ -170,17 +170,17 @@ const Page1 = () => {
                 targets: '.animation-container',
                 translateY: '-2200vh',
                 duration: 3000,
+            })
+            .add({
+                targets: '.animation-container',
+                translateY: '-2300vh',
+                duration: 3000,
                 changeComplete: async ()=>{
                     const list = document.getElementById('txt3');
                     typing(list.children[1], list.children[0],()=>{
                         ref.current.play()
                     })
                 }
-            })
-            .add({
-                targets: '.animation-container',
-                translateY: '-2300vh',
-                duration: 3000,
             })
             .add({
                 targets: '.animation-container',
@@ -216,6 +216,11 @@ const Page1 = () => {
                 targets: '.animation-container',
                 translateY: '-3000vh',
                 duration: 3000,
+            })
+            .add({
+                targets: '.animation-container',
+                translateY: '-3100vh',
+                duration: 3000,
                 changeComplete: async ()=>{
                     const list = document.getElementById('txt11');
                     typing(list.children[1], list.children[0],()=>{
@@ -223,11 +228,6 @@ const Page1 = () => {
                     })
 
                 }
-            })
-            .add({
-                targets: '.animation-container',
-                translateY: '-3100vh',
-                duration: 3000,
             })
             .add({
                 targets: '.animation-container',
@@ -242,6 +242,16 @@ const Page1 = () => {
             .add({
                 targets: '.animation-container',
                 translateY: '-3400vh',
+                duration: 3000,
+            })
+            .add({
+                targets: '.animation-container',
+                translateY: '-3500vh',
+                duration: 3000,
+            })
+            .add({
+                targets: '.animation-container',
+                translateY: '-3500vh',
                 duration: 3000,
                 changeComplete: async ()=>{
                     const list = document.getElementById('txt12');
@@ -370,7 +380,7 @@ const Page1 = () => {
             ref.current.pause()
         });
         // @ts-ignore
-        ref.current.children[35].finished.then((data) => {
+        ref.current.children[36].finished.then((data) => {
             // @ts-ignore
             ref.current.pause()
         });
@@ -509,8 +519,7 @@ const Page1 = () => {
                     </button>
                     <img src={'/page1/7.png'}/>
                     <div className={styles.phone_con}>
-                        <input onFocus={(e) => {
-                            debugger;
+                        <span onClick={(e) => {
                             setPhoneshow(true)
                             setCloseList(false)
                             e.preventDefault();
@@ -567,7 +576,7 @@ const Page1 = () => {
                                                     <>
                                                         <span style={{
                                                             marginLeft: '1.5rem',
-                                                            textAlign: 'right'
+                                                            textAlign: 'left'
                                                         }}>{message}</span>
                                                         <img style={{marginLeft: '0.52rem'}}
                                                              src={`/page1/${type}.png`}/>
@@ -579,58 +588,52 @@ const Page1 = () => {
                                     })
                                 }
                             </div>
+                            {
+                                closeList?null:
+                                    <div className={styles.fixed_list} >{
+                                        [
+                                            '真的很糟糕 😂',
+                                            '知道了，我忙了',
+                                            '挺好的，不用担心。'
+                                        ].map((value, key) => {
+                                            return <div onClick={() => {
+                                                setMessage(value)
+                                                if (key === 0) {
+                                                    setTimeout(() => {
+                                                        // @ts-ignore
 
-                            <div className={styles.fixed_list} style={{
-                                ...closeList ? {
-                                    display: 'none',
-                                    opacity: '0'
-                                } : {
-                                    display: 'flex',
-                                    opacity: '1'
-                                }
-                            }}>{
-                                [
-                                    '真的很糟糕 😂',
-                                    '知道了，我忙了',
-                                    '挺好的，不用担心。'
-                                ].map((value, key) => {
-                                    return <div onClick={() => {
-                                        setMessage(value)
-                                        if (key === 0) {
-                                            setTimeout(() => {
-                                                // @ts-ignore
+                                                        setExtraList([
+                                                            // @ts-ignore
+                                                            {type: 'mother', message: '那我就放心了。'},
+                                                            // @ts-ignore
+                                                            {type: 'my', message: '😀'},
+                                                        ])
+                                                    }, 500)
 
-                                                setExtraList([
-                                                    // @ts-ignore
-                                                    {type: 'mother', message: '那我就放心了。'},
-                                                    // @ts-ignore
-                                                    {type: 'my', message: '😀'},
-                                                ])
-                                            }, 500)
+                                                } else if (key === 1) {
+                                                    setTimeout(() => {
+                                                        // @ts-ignore
+                                                        setExtraList([
+                                                            // @ts-ignore
+                                                            {type: 'mother', message: '哪里遇见难处了，跟妈妈说一说。'},
+                                                            // @ts-ignore
+                                                            {type: 'my', message: '唉，在这说不清楚，有空视频说'},
+                                                            // @ts-ignore
+                                                            {type: 'mother', message: '好的，有妈妈在，别担心'},
+                                                        ])
+                                                    }, 500)
 
-                                        } else if (key === 1) {
-                                            setTimeout(() => {
-                                                // @ts-ignore
-                                                setExtraList([
-                                                    // @ts-ignore
-                                                    {type: 'mother', message: '哪里遇见难处了，跟妈妈说一说。'},
-                                                    // @ts-ignore
-                                                    {type: 'my', message: '唉，在这说不清楚，有空视频说'},
-                                                    // @ts-ignore
-                                                    {type: 'mother', message: '好的，有妈妈在，别担心'},
-                                                ])
-                                            }, 500)
+                                                } else if (key === 2) {
+                                                    setTimeout(() => {
+                                                        // @ts-ignore
+                                                        setExtraList([{type: 'mother', message: '好的吧......'},])
+                                                    }, 500)
 
-                                        } else if (key === 2) {
-                                            setTimeout(() => {
-                                                // @ts-ignore
-                                                setExtraList([{type: 'mother', message: '好的吧......'},])
-                                            }, 500)
-
-                                        }
-                                    }}>{value}</div>
-                                })
-                            }</div>
+                                                }
+                                            }}>{value}</div>
+                                        })
+                                    }</div>
+                            }
                             {
                                 closeList ? <button onClick={start} className={styles.next_phone}></button> : null
                             }
@@ -702,7 +705,15 @@ const Page1 = () => {
                             onClick={() => showBtn(0)}
                     >
                     </button>
-                    <img src={'/page1/8-3.png'}/>
+                    <img src={'/page1/8-3-1.png'}/>
+                    <button onClick={start} className={styles.next_special}></button>
+                </div>
+                <div className={`${styles.img2} animation-img15`}>
+                    <button className={styles.home}
+                            onClick={() => showBtn(0)}
+                    >
+                    </button>
+                    <img src={'/page1/8-3-2.png'}/>
                     <button onClick={start} className={styles.next_special}></button>
                 </div>
                 <div className={`${styles.txt} animation-img16`}>
@@ -878,7 +889,7 @@ const Page1 = () => {
                             onClick={() => showBtn(0)}
                     >
                     </button>
-                    <img src={'/page1/9.png'}/>
+                    <img src={'/page1/bbooooff.png'}/>
                     <button onClick={start} className={styles.next_special}></button>
                 </div>
 
@@ -921,7 +932,15 @@ const Page1 = () => {
                             onClick={() => showBtn(0)}
                     >
                     </button>
-                    <img src={'/page1/errrr.png'}/>
+                    <img src={'/page1/uuuttt.png'}/>
+                    <button onClick={start} className={styles.next_special}></button>
+                </div>
+                <div className={`${styles.img2} animation-img15`}>
+                    <button className={styles.home}
+                            onClick={() => showBtn(0)}
+                    >
+                    </button>
+                    <img src={'/page1/iioolllhh.png'}/>
                     <button onClick={start} className={styles.next_special}></button>
                 </div>
                 <div className={`${styles.img2} animation-img15`}>
