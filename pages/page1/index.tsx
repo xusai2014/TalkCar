@@ -13,6 +13,8 @@ const Page1 = () => {
     const [messageVal, setMessage] = useState('');
     const [phoneShow, setPhoneshow] = useState(false);
     const [closeList, setCloseList] = useState(false);
+    const [call, setCall] = useState(0);
+    const [dialogIndex,setDialogIndex] = useState(0)
     // @ts-ignore
     const [extraList, setExtraList] = useState([])
 
@@ -33,8 +35,7 @@ const Page1 = () => {
     ]
     useEffect(() => {
         ref.current = anime.timeline({
-            endDelay: 1000,
-            easing: 'easeInOutQuad',
+            easing: 'easeInOutExpo',
             autoplay: true,
         })
             .add({
@@ -186,6 +187,67 @@ const Page1 = () => {
                 translateY: '-2400vh',
                 duration: 3000,
             })
+            .add({
+                targets: '.animation-container',
+                translateY: '-2500vh',
+                duration: 3000,
+            })
+            .add({
+                targets: '.animation-container',
+                translateY: '-2600vh',
+                duration: 3000,
+            })
+            .add({
+                targets: '.animation-container',
+                translateY: '-2700vh',
+                duration: 3000,
+            })
+            .add({
+                targets: '.animation-container',
+                translateY: '-2800vh',
+                duration: 3000
+            })
+            .add({
+                targets: '.animation-container',
+                translateY: '-2900vh',
+                duration: 3000,
+            })
+            .add({
+                targets: '.animation-container',
+                translateY: '-3000vh',
+                duration: 3000,
+                changeComplete: async ()=>{
+                    const list = document.getElementById('txt11');
+                    typing(list.children[1], list.children[0],()=>{
+                        ref.current.play()
+                    })
+
+                }
+            })
+            .add({
+                targets: '.animation-container',
+                translateY: '-3100vh',
+                duration: 3000,
+            })
+            .add({
+                targets: '.animation-container',
+                translateY: '-3200vh',
+                duration: 3000,
+            })
+            .add({
+                targets: '.animation-container',
+                translateY: '-3300vh',
+                duration: 3000,
+            })
+            .add({
+                targets: '.animation-container',
+                translateY: '-3400vh',
+                duration: 3000,
+                changeComplete: async ()=>{
+                    const list = document.getElementById('txt12');
+                    typing(list.children[1], list.children[0],()=>{})
+                }
+            })
 
 
         addQIaoduan()
@@ -266,28 +328,21 @@ const Page1 = () => {
             ref.current.pause()
         });
 
-        // @ts-ignore
-        ref.current.children[15].finished.then((data) => {
-            // @ts-ignore
-            ref.current.pause()
-        });
+
         // @ts-ignore
         ref.current.children[16].finished.then((data) => {
             // @ts-ignore
             ref.current.pause()
         });
-        // @ts-ignore
-        ref.current.children[17].finished.then((data) => {
-            // @ts-ignore
-            ref.current.pause()
-        });
+
         // @ts-ignore
         ref.current.children[18].finished.then((data) => {
             // @ts-ignore
             ref.current.pause()
         });
+
         // @ts-ignore
-        ref.current.children[19].finished.then((data) => {
+        ref.current.children[20].finished.then((data) => {
             // @ts-ignore
             ref.current.pause()
         });
@@ -301,8 +356,21 @@ const Page1 = () => {
             // @ts-ignore
             ref.current.pause()
         });
+
+
         // @ts-ignore
-        ref.current.children[24].finished.then((data) => {
+        ref.current.children[25].finished.then((data) => {
+            // @ts-ignore
+            ref.current.pause()
+        });
+
+        // @ts-ignore
+        ref.current.children[31].finished.then((data) => {
+            // @ts-ignore
+            ref.current.pause()
+        });
+        // @ts-ignore
+        ref.current.children[35].finished.then((data) => {
             // @ts-ignore
             ref.current.pause()
         });
@@ -691,31 +759,201 @@ const Page1 = () => {
                          src={'/page1/zhong530.png'}/>
                     <button onClick={start} className={styles.next_special}></button>
                 </div>
-                <div className={`${styles.img2}`} style={{backgroundColor: '#fdd2a7'}}>
+                <div className={`${styles.img2}`} style={{backgroundColor: '#fdd2a7',
+                    ...call ===1?{
+                        backgroundImage: 'url(/page1/8-6.png)',
+                        backgroundRepeat: 'no-repeat',
+                        backgroundSize: 'cover',
+                    }:(
+                        call ===3?{
+                            backgroundImage: 'url(/page1/rg.png)',
+                            backgroundRepeat: 'no-repeat',
+                            backgroundSize: 'cover',
+                        }:{}
+                    )
+                }}>
                     <button className={styles.home}
                             onClick={() => showBtn(0)}
                     >
                     </button>
-                    <img style={{
-                        width: '80vw',
-                        display: 'block',
-                        height: 'auto'
-                    }} src={'/page1/phone.png'}/>
-                    <div className={styles.phonels}>
-                        <img className={styles.touxiang} src={'page1/mother.png'} />
-                        <div className={styles.txtK}>
-                            妈妈
-                        </div>
-                        <div className={styles.caozuo}>
-                            <img src={'page1/closeP.png'} />
-                            <img src={'page1/jieP.png'} />
-                        </div>
-                    </div>
+
+                    {
+                        call === 3? null: <img style={{
+                            width: '80vw',
+                            display: 'block',
+                            height: 'auto'
+                        }} src={call === 2? '/page1/shutdown1.png':'/page1/phone.png'}
+                        />
+                    }
+                    {
+                        call === 0?<div className={styles.phonels}>
+                            <img className={styles.touxiang} src={'page1/mother.png'} />
+                            <div className={styles.txtK}>
+                                妈妈
+                            </div>
+                            <div className={styles.caozuo}>
+                                <img src={'page1/closeP.png'}  onClick={()=>{
+                                    setCall(2)
+                                    setTimeout(()=>{
+                                        setCall(0)
+                                    },2000)
+                                }}/>
+                                <img src={'page1/jieP.png'} onClick={()=>{
+                                    setCall(1)
+                                    setTimeout(()=>{
+                                        setCall(3)
+                                    },2000)
+                                }}/>
+                            </div>
+                        </div>:(
+                            call === 2?null:
+                                (
+                                    call === 1? <div className={styles.phonels}>
+                                        <img className={styles.touxiang} src={'page1/mother.png'} />
+                                        <div className={styles.txtK}>
+                                            妈妈
+                                        </div>
+                                        <div className={styles.clock}>
+                                            <img src={'page1/00.png'} />
+                                        </div>
+                                        <div className={styles.caozuo1}>
+                                            <img src={'page1/35.png'} />
+                                            <img src={'page1/36.png'} />
+                                            <img src={'page1/37.png'} />
+                                        </div>
+                                        <div className={styles.ysq}>
+                                            <img src={'page1/38.png'} />
+                                        </div>
+                                    </div>:null
+                                )
+
+                        )
+                    }
+                    {
+                        call === 3?
+                            <div className={styles.dialog22}>
+                                <img src={'/page1/98.png'} />
+                                <div onClick={()=>{
+                                    if(dialogIndex >= 3) {
+                                        ref.current.play()
+                                    } else {
+                                        setDialogIndex(dialogIndex + 1)
+                                    }
+                                }}>
+                                    {
+                                        [
+                                            ['不用你帮忙','我很好'],
+                                            ['先不找男朋友','我知道了'],
+
+                                            ['就没什么，工作呢','知道了'],
+                                            ['就这样，我现在很忙','是的，我知道了'],
+                                        ][dialogIndex].map(v=> <span>{v}</span>)
+                                    }
+                                </div>
+                            </div>:
+                            null
+                    }
+                </div>
+                <div className={`${styles.txt} animation-img18`}>
+                    <button className={styles.home}
+                            onClick={() => showBtn(0)}
+                    >
+                    </button>
+                    <img className={styles.zhong} style={{width: '8.53rem'}}
+                         src={'/page1/2230.png'}/>
                     <button onClick={start} className={styles.next_special}></button>
                 </div>
+
+                <div className={`${styles.img2} animation-img15`}>
+                    <button className={styles.home}
+                            onClick={() => showBtn(0)}
+                    >
+                    </button>
+                    <img src={'/page1/tttx.png'}/>
+                    <button onClick={start} className={styles.next_special}></button>
+                </div>
+
+                <div className={`${styles.img2} animation-img15`}>
+                    <button className={styles.home}
+                            onClick={() => showBtn(0)}
+                    >
+                    </button>
+                    <img src={'/page1/9.png'}/>
+                    <button onClick={start} className={styles.next_special}></button>
+                </div>
+
+
+                <div className={`${styles.txt} animation-img18`}>
+                    <button className={styles.home}
+                            onClick={() => showBtn(0)}
+                    >
+                    </button>
+                    <img className={styles.zhong} style={{width: '8.53rem'}}
+                         src={'/page1/2300.png'}/>
+                    <button onClick={start} className={styles.next_special}></button>
+                </div>
+
+                <div className={`${styles.img2} animation-img15`}>
+                    <button className={styles.home}
+                            onClick={() => showBtn(0)}
+                    >
+                    </button>
+                    <img src={'/page1/8.png'}/>
+                    <button onClick={start} className={styles.next_special}></button>
+                </div>
+
+                <div id={'txt11'} className={`${styles.txt} animation-img1-1`}>
+                    <div className={styles.txt_one} style={{width: '100vw', textAlign: 'right'}}>
+                    </div>
+                    <div className={styles.txt_con} style={{display: 'none'}}>
+                        周末
+                        <br/>无论是一个人
+                        <br/>两个人
+                        <br/>三个人
+                        <br/>或者是一群人
+                        <br/>我们总能在不同的阶段拥有不同的收获
+                        <br/>当我们独自前行的是好
+                        <br/>要珍惜陪伴的日子
+                    </div>
+                </div>
+                <div className={`${styles.img2} animation-img15`}>
+                    <button className={styles.home}
+                            onClick={() => showBtn(0)}
+                    >
+                    </button>
+                    <img src={'/page1/errrr.png'}/>
+                    <button onClick={start} className={styles.next_special}></button>
+                </div>
+                <div className={`${styles.img2} animation-img15`}>
+                    <button className={styles.home}
+                            onClick={() => showBtn(0)}
+                    >
+                    </button>
+                    <img src={'/page1/djk.png'}/>
+                    <button onClick={start} className={styles.next_special}></button>
+                </div>
+                <div className={`${styles.img2} animation-img15`}>
+                    <button className={styles.home}
+                            onClick={() => showBtn(0)}
+                    >
+                    </button>
+                    <img src={'/page1/kllloo.png'}/>
+                    <button onClick={start} className={styles.next_special}></button>
+                </div>
+                <div id={'txt12'} className={`${styles.txt} animation-img1-1`}>
+                    <div className={styles.txt_one} style={{width: '100vw', textAlign: 'right'}}>
+                    </div>
+                    <div className={styles.txt_con} style={{display: 'none'}}>
+                        独居在每个来到大城市打拼的年轻人
+                        <br/>刻下了深深的烙印
+                        <br/>在坚持的道路上
+                        <br/>也许是孤独的
+                        <br/>这些所谓的“孤独感”
+                        <br/>也许将会是成就我们未来
+                    </div>
+                </div>
+
             </div>
-
-
             <div className={`${styles.fixed}  animation-fixed ${fixedV > 0 ? styles.fixed_1 : ''}`}>
                 <button
                     className={`${styles.fixed_btn} ${fixedV > 0 ? styles.fixed_special_1 : ""}`}

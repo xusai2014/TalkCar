@@ -331,7 +331,7 @@
     height: 1.95rem;
   }
   > span {
-    max-width: 6.25rem;
+    max-width: 5.25rem;
     line-height: 0.62rem;
     display: inline-block;
     font-size: 0.5rem;
@@ -407,7 +407,29 @@
     transform:rotate(0deg);
   }
 }
-
+.dialog22 {
+  width: 12rem;
+  position: absolute;
+  margin: auto;
+  bottom: 3rem;
+  > img {
+    width: 100%;
+  }
+  > div {
+    width: 100%;
+    position: absolute;
+    top: 3rem;
+    >span {
+      display: block;
+      font-size: 1.03rem;
+      font-family: fangmeng;
+      font-weight: 400;
+      color: #FCE9D0;
+      line-height: 3rem;
+      text-align: center;
+    }
+  }
+}
 .phonels {
   position: absolute;
   top: 8rem;
@@ -426,6 +448,19 @@
     font-size: 2rem;
     margin-bottom: 3rem;
   }
+  .clock {
+    margin-top: -2rem;
+    margin-bottom: 1rem;
+    > img {
+      width: 3.63rem;
+    }
+  }
+  .ysq{
+    margin-top: 1rem;
+    > img {
+      width: 2.63rem;
+    }
+  }
   .caozuo {
     display: flex;
     width: 8rem;
@@ -434,5 +469,14 @@
        width: 2.63rem;
        height: 2.63rem;
      }
+  }
+  .caozuo1{
+    &:extend(.caozuo);
+    justify-content: space-around;
+    > img {
+      width: 1.63rem;
+      margin: 0 0.3rem;
+    }
+
   }
 }
