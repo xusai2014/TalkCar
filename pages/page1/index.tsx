@@ -15,6 +15,8 @@ const Page1 = () => {
     const [closeList, setCloseList] = useState(true);
     const [call, setCall] = useState(0);
     const [dialogIndex,setDialogIndex] = useState(0);
+    const [showGif, setShowGif] = useState(false);
+
     const [ shuaya, setShuaya] = useState(0)
     // @ts-ignore
     const [extraList, setExtraList] = useState([])
@@ -436,15 +438,18 @@ const Page1 = () => {
                             onClick={() => showBtn(0)}
                     >
                     </button>
-                    <img src={'/page1/6-5.png'}/>
-                    <div className={styles.gif_con}>
-                        {
-                            [
-                                1,2,3
-                            ].map((v)=> <img src={`/page1/${v}.gif`} />)
+                    <img src={'/page1/6-5.png'} onClick={()=>setShowGif(true)} />
+                    {
+                        showGif?<div className={styles.gif_con}>
+                            {
+                                [
+                                    1,3,2
+                                ].map((v)=> <img src={`/page1/${v}.gif`} />)
 
-                        }
-                    </div>
+                            }
+                        </div>:null
+                    }
+
                     <button onClick={start} className={styles.next_special}></button>
                 </div>
                 <div className={`${styles.img2} animation-img8`}>
