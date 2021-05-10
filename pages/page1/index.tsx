@@ -726,7 +726,9 @@ const Page1 = () => {
                     </button>
 
                     {
-                        call === 3? null: <img style={{
+                        call === 3? null: <img
+                            className={`${call === 0?  styles.phone_img_move:''}`}
+                            style={{
                             width: '80vw',
                             display: 'block',
                             height: 'auto'
@@ -734,7 +736,7 @@ const Page1 = () => {
                         />
                     }
                     {
-                        call === 0?<div className={styles.phonels}>
+                        call === 0?<div className={`${styles.phonels} ${styles.phone_img_move}`}>
                             <img className={styles.touxiang} src={'page1/mother.png'} />
                             <div className={styles.txtK}>
                                 妈妈
