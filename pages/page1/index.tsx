@@ -52,9 +52,7 @@ const Page1 = () => {
                 changeComplete: async ()=>{
 
                     const list = document.getElementById('txt1');
-                    typing(list.children[1], list.children[0],()=>{
-                        ref.current.play()
-                    })
+                    typing(list.children[1], list.children[0],()=>{})
 
                 }
             })
@@ -111,7 +109,6 @@ const Page1 = () => {
                 changeComplete: async ()=>{
                     const list = document.getElementById('txt2');
                     typing(list.children[1], list.children[0],()=>{
-                        ref.current.play()
                     })
                 }
             })
@@ -178,7 +175,6 @@ const Page1 = () => {
                 changeComplete: async ()=>{
                     const list = document.getElementById('txt3');
                     typing(list.children[1], list.children[0],()=>{
-                        ref.current.play()
                     })
                 }
             })
@@ -224,7 +220,6 @@ const Page1 = () => {
                 changeComplete: async ()=>{
                     const list = document.getElementById('txt11');
                     typing(list.children[1], list.children[0],()=>{
-                        ref.current.play()
                     })
 
                 }
@@ -296,95 +291,18 @@ const Page1 = () => {
     }
 
     function addQIaoduan() {
-        // @ts-ignore
-        ref.current.children[1].finished.then((data) => {
+        for (let i = 0;i < 36 ;i++){
             // @ts-ignore
-            ref.current.pause()
-        });
-        // @ts-ignore
-        ref.current.children[2].finished.then((data) => {
-            // @ts-ignore
-            ref.current.pause()
-        });
-        // @ts-ignore
-        ref.current.children[5].finished.then((data) => {
-            // @ts-ignore
-            ref.current.pause()
-        });
-        // @ts-ignore
-        ref.current.children[6].finished.then((data) => {
-            // @ts-ignore
-            ref.current.pause()
-        });
+            ref.current.children[i].finished.then((data) => {
+                // @ts-ignore
+                if([0,3,4].includes(i)) {
 
-        // @ts-ignore
-        ref.current.children[10].finished.then((data) => {
-            // @ts-ignore
-            ref.current.pause()
-        });
-        // @ts-ignore
-        ref.current.children[11].finished.then((data) => {
-            // @ts-ignore
-            ref.current.pause()
-        });
-        // @ts-ignore
-        ref.current.children[12].finished.then((data) => {
-            // @ts-ignore
-            ref.current.pause()
-        });
-        // @ts-ignore
-        ref.current.children[13].finished.then((data) => {
-            // @ts-ignore
-            ref.current.pause()
-        });
+                } else {
+                    ref.current.pause()
+                }
 
-
-        // @ts-ignore
-        ref.current.children[16].finished.then((data) => {
-            // @ts-ignore
-            ref.current.pause()
-        });
-
-        // @ts-ignore
-        ref.current.children[18].finished.then((data) => {
-            // @ts-ignore
-            ref.current.pause()
-        });
-
-
-        // @ts-ignore
-        ref.current.children[21].finished.then((data) => {
-            // @ts-ignore
-            ref.current.pause()
-        });
-        // @ts-ignore
-        ref.current.children[23].finished.then((data) => {
-            // @ts-ignore
-            ref.current.pause()
-        });
-        // @ts-ignore
-        ref.current.children[24].finished.then((data) => {
-            // @ts-ignore
-            ref.current.pause()
-        });
-
-
-        // @ts-ignore
-        ref.current.children[26].finished.then((data) => {
-            // @ts-ignore
-            ref.current.pause()
-        });
-
-        // @ts-ignore
-        ref.current.children[32].finished.then((data) => {
-            // @ts-ignore
-            ref.current.pause()
-        });
-        // @ts-ignore
-        ref.current.children[36].finished.then((data) => {
-            // @ts-ignore
-            ref.current.pause()
-        });
+            });
+        }
     }
 
     // @ts-ignore
@@ -421,24 +339,25 @@ const Page1 = () => {
                     <div className={styles.txt_con} style={{display: 'none'}}>
                         {txtList1.map((v)=> <>{v}<br/></>)}
                     </div>
+                    <button onClick={start} className={styles.next_special}></button>
                 </div>
 
                 <div className={`${styles.img2} animation-img2`}>
-                    <button className={styles.home_special}
+                    <button className={styles.home}
                             onClick={() => showBtn(1)}
                     >
                     </button>
                     <img className={styles.img2_sut} src={'/page1/2.png'}/>
                 </div>
                 <div className={`${styles.img2} animation-img3`}>
-                    <button className={styles.home_special}
+                    <button className={styles.home}
                             onClick={() => showBtn(1)}
                     >
                     </button>
                     <img className={styles.img2_sut} src={'/page1/3.png'}/>
                 </div>
                 <div className={`${styles.img2} animation-img4`}>
-                    <button className={styles.home_special}
+                    <button className={styles.home}
                             onClick={() => showBtn(1)}
                     >
                     </button>
@@ -452,7 +371,7 @@ const Page1 = () => {
                     >
                     </button>
                     <img src={'/page1/5.png'}/>
-                    <button onClick={start} className={styles.next}></button>
+                    <button onClick={start} className={styles.next_special}></button>
                 </div>
                 <div className={`${styles.img2} animation-img6`}>
                     <button className={styles.home}
@@ -460,6 +379,7 @@ const Page1 = () => {
                     >
                     </button>
                     <img src={'/page1/6.png'}/>
+                    <button onClick={start} className={styles.next_special}></button>
                 </div>
                 <div className={`${styles.txt} animation-img7`}>
                     <button className={styles.home_black}
@@ -505,6 +425,7 @@ const Page1 = () => {
                             })
                         }
                     </div>
+                    <button onClick={start} className={styles.next_special}></button>
                 </div>
                 <div className={`${styles.img2} animation-img65`}>
                     <button className={styles.home}
@@ -512,6 +433,15 @@ const Page1 = () => {
                     >
                     </button>
                     <img src={'/page1/6-5.png'}/>
+                    <div className={styles.gif_con}>
+                        {
+                            [
+                                1,2,3
+                            ].map((v)=> <img src={`/page1/${v}.gif`} />)
+
+                        }
+                    </div>
+                    <button onClick={start} className={styles.next_special}></button>
                 </div>
                 <div className={`${styles.img2} animation-img8`}>
                     <button className={styles.home}
@@ -522,7 +452,6 @@ const Page1 = () => {
                     <div className={styles.phone_con}>
                         <span onClick={(e) => {
                             setPhoneshow(true)
-                            setCloseList(false)
                             e.preventDefault();
                             e.stopPropagation();
                         }}/>
@@ -593,9 +522,9 @@ const Page1 = () => {
                                 closeList?null:
                                     <div className={styles.fixed_list} >{
                                         [
+                                            '挺好的，不用担心。',
                                             '真的很糟糕 😂',
                                             '知道了，我忙了',
-                                            '挺好的，不用担心。'
                                         ].map((value, key) => {
                                             return <div onClick={() => {
                                                 setMessage(value)
@@ -636,9 +565,13 @@ const Page1 = () => {
                                     }</div>
                             }
                             {
-                                closeList ? <button onClick={start} className={styles.next_phone}></button> : null
+                                extraList.length >0 ? <button onClick={start} style={{zIndex: '1', left: '5.5rem'}} className={styles.next_phone}></button> : null
                             }
 
+                            <div className={styles.phone_footer}>
+                                <span onClick={()=>setCloseList(false)}></span>
+                                <button>发送</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -660,6 +593,7 @@ const Page1 = () => {
                         <br/>适应环境生存下来的本领
                         <br/>我们被赋予的技能
                     </div>
+                    <button onClick={start} className={styles.next_special}></button>
                 </div>
                 <div className={`${styles.img2} animation-img10`}>
                     <button className={styles.home}
@@ -731,7 +665,7 @@ const Page1 = () => {
                             onClick={() => showBtn(0)}
                     >
                     </button>
-                    <img src={'/page1/8-4.png'}/>
+                    <img src={'/page1/8-4.gif'}/>
                     <button onClick={start} className={styles.next_special}></button>
                 </div>
                 <div className={`${styles.txt} animation-img18`}>
@@ -761,6 +695,7 @@ const Page1 = () => {
                         但是父母的唠叨有时未必是一种错误<br />
                         要感悟深处的爱
                     </div>
+                    <button onClick={start} className={styles.next_special}></button>
                 </div>
                 <div className={`${styles.txt}`}>
                     <button className={styles.home}
@@ -770,6 +705,7 @@ const Page1 = () => {
                     <img className={styles.zhong} style={{width: '8.53rem'}}
                          src={'/page1/zhong530.png'}/>
                     <button onClick={start} className={styles.next_special}></button>
+
                 </div>
                 <div className={`${styles.img2}`} style={{backgroundColor: '#fdd2a7',
                     ...call ===1?{
@@ -927,6 +863,7 @@ const Page1 = () => {
                         <br/>当我们独自前行的是好
                         <br/>要珍惜陪伴的日子
                     </div>
+                    <button onClick={start} className={styles.next_special}></button>
                 </div>
                 <div className={`${styles.img2} animation-img15`}>
                     <button className={styles.home}
@@ -986,7 +923,7 @@ const Page1 = () => {
                         addQIaoduan()
                     }}
                 >
-                    <div>继续故事</div>
+                    <img src={'/page1/continueStory.png'} />
                 </button>
                 <button
                     style={{
@@ -1004,9 +941,7 @@ const Page1 = () => {
 
 
                 >
-                    <div>
-                        {fixedV > 0 ? "返回主页" : "重新开始"}
-                    </div>
+                    {fixedV > 0 ? <img src={'/page1/backHome.png'} /> : <img src={'/page1/backHome.png'} />}
                 </button>
             </div>
         </div>

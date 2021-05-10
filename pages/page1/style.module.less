@@ -61,7 +61,7 @@
   position: absolute;
   top: calc(50vh - 0.5rem);
   right: 1rem;
-  width: 2.22rem;
+  width: 2.3rem;
   height: 2.22rem;
   border: 0;
   background-image: url(/page1/next.png);
@@ -74,7 +74,7 @@
 .next_special {
   &:extend(.next);
   position: absolute;
-  bottom: 0.85rem;
+  bottom: 2.25rem;
   border: 0;
   background-image: url(/page1/next.png);
   background-repeat: no-repeat;
@@ -151,7 +151,18 @@
   overflow: hidden;
 
 }
-
+.gif_con {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0);
+  > img {
+    width: 7.07rem;
+    margin: 0.71rem 0;
+  }
+}
 .img2_sut {
   transform: rotate(90deg);
   width: 100vh;
@@ -183,9 +194,6 @@
 }
 
 .fixed_btn {
-  background-image: url("/page1/border.png");
-  background-repeat: no-repeat;
-  background-size: cover;
   background-color: #fff0;
   margin: auto;
   border: none;
@@ -194,6 +202,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  > img {
+    width: 4.08rem;
+  }
 
 
   >div {
@@ -347,8 +358,36 @@
   left: 2.27rem;
 }
 
+.phone_footer {
+  position: absolute;
+  bottom: 2.19rem;
+  width: 10.33rem;
+  height: 2.22rem;
+  left: 1.51rem;
+  background: #EFC3A3;
+  border-radius: 0px 0px 0.44rem 0.44rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+  > span {
+    height: 1.2rem;
+    width: 6rem;
+    background-color: #FEE9DA;
+  }
+  > button {
+    width: 2rem;
+    height: 1.2rem;
+    font-family: fangmeng;
+    font-size: 0.5rem;
+    border-radius: 0.23rem;
+    background: #FEE9DA;
+  }
+}
+
 .fixed_list {
-  animation: animation_list 3.5s ease-in-out;
+  z-index: 1;
+  animation: animation_list 1.5s ease-in-out;
   position: absolute;
   bottom: 2.68rem;
   left: 2.33rem;
