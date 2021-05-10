@@ -14,7 +14,8 @@ const Page1 = () => {
     const [phoneShow, setPhoneshow] = useState(false);
     const [closeList, setCloseList] = useState(true);
     const [call, setCall] = useState(0);
-    const [dialogIndex,setDialogIndex] = useState(0)
+    const [dialogIndex,setDialogIndex] = useState(0);
+    const [ shuaya, setShuaya] = useState(0)
     // @ts-ignore
     const [extraList, setExtraList] = useState([])
 
@@ -132,6 +133,9 @@ const Page1 = () => {
                 targets: '.animation-container',
                 translateY: '-1500vh',
                 duration: 3000,
+                changeComplete: async ()=>{
+                    setShuaya(0)
+                }
             })
             .add({
                 targets: '.animation-container',
@@ -601,6 +605,9 @@ const Page1 = () => {
                     >
                     </button>
                     <img src={'/page1/8-1.png'}/>
+                    <div className={styles.zhong_con}>
+                        <img src={'/page1/700.png'}/>
+                    </div>
                     <button onClick={start} className={styles.next_special}></button>
                 </div>
                 <div className={`${styles.img2} animation-img11`}>
@@ -609,6 +616,9 @@ const Page1 = () => {
                     >
                     </button>
                     <img src={'/page1/8-2.png'}/>
+                    <div className={styles.zhong_con}>
+                        <img src={'/page1/715.png'}/>
+                    </div>
                     <button onClick={start} className={styles.next_special}></button>
                 </div>
                 <div className={`${styles.txt} animation-img12`}>
@@ -624,7 +634,7 @@ const Page1 = () => {
                             onClick={() => showBtn(0)}
                     >
                     </button>
-                    <img src={'/page1/9.png'}/>
+                    <div className={styles.shaya_move}/>
                     <button onClick={start} className={styles.next_special}></button>
                 </div>
                 <div className={`${styles.txt} animation-img14`}>

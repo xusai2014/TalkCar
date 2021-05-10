@@ -413,6 +413,17 @@
   from { opacity: 0; }
   to{ opacity: 1; }
 }
+@keyframes shaya {
+  from { background-image: url("/page1/9.png"); }
+  to{ background-image: url("/page1/10.png"); }
+}
+
+.shaya_move {
+  animation:shaya 900ms ease-in 100ms infinite;
+  height: 100vh;
+  width: 100vw;
+  background-size: cover;
+}
 
 .zhong {
   animation:move 1500ms 0s infinite;
@@ -477,6 +488,24 @@
 }
 .phone_img_move {
   animation:move 500ms 0s infinite;
+}
+.zhong_con {
+  position: absolute;
+  bottom: 4rem;
+  background-image: url("/page1/zhongCon.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 10.95rem;
+  left: 2.67rem;
+  height: 7.3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  > img {
+    animation:move 500ms 0ms infinite;
+    width: 6.27rem;
+    height: 3.92rem;
+  }
 }
 .phonels {
   position: absolute;
