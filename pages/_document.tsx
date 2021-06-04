@@ -12,6 +12,7 @@ export default class MyDocument extends Document {
         return (
             <Html>
                 <Head>
+                    <meta name="google-site-verification" content="CjH7PlEDRMCFj_6LvuCPKhGRHoq8LdAdjABGTmI5F0Y" />
                 <script src='https://res.wx.qq.com/open/js/jweixin-1.6.0.js' />
                     <script type="text/javascript" dangerouslySetInnerHTML={{__html:`var _hmt = _hmt || [];
                         (function() {
