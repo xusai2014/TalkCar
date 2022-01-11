@@ -2,7 +2,7 @@ module.exports = {
   apps: [
     {
       name: "ssr",
-      script: "next start -p 3000",
+      script: "npx next start -p 80",
       instances: 1,
       watch: false,
       max_memory_restart: "1G",

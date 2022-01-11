@@ -1,26 +1,31 @@
-FROM node:16-alpine3.15 as base-stage
+FROM node:alpine3.15 as module-stage
 WORKDIR /app
+ENV PATH /app/node_modules/.bin:$PATH
+ENV NODE_ENV production
 COPY . /app
-ENV NEXT_TELEMETRY_DEBUG=1
-# 中科大镜像源地址
-#RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories
-#RUN apk --no-cache --virtual build-dependencies add python2 make g++
-#RUN yarn config set python python2
+RUN yarn install --production --silent --ignore-optional --pure-lockfile
 
-RUN yarn global add pm2
-RUN pm2 install pm2-logrotate \
-  && pm2 set pm2-logrotate:max_size 50M \
-  && pm2 set pm2-logrotate:retain 10
-RUN yarn
 
-#RUN apk del build-dependencies
 
-RUN yarn run build
-RUN rm -rf node_modules
-
-FROM base-stage as prod-stage
+FROM module-stage as build-stage
 WORKDIR /app
-RUN yarn install --production
+ENV NEXT_TELEMETRY_DEBUG=1
+
+RUN yarn install --force && yarn run build && rm -rf .next/cache
+
+
+FROM node:alpine3.15 as prod-stage
+ENV NODE_ENV production
+ENV PATH /app/node_modules/.bin:$PATH
+WORKDIR /app
+COPY --from=build-stage /app/.next /app/.next
+COPY --from=module-stage /app/node_modules /app/node_modules
+COPY . /app
+RUN pm2 install pm2-logrotate \
+      && pm2 set pm2-logrotate:max_size 10M \
+      && pm2 set pm2-logrotate:retain 5 \
+
+#RUN yarn cache clean --all
 
 EXPOSE 80
 ENTRYPOINT ["/bin/sh", "--", "./docker_entrypoint.sh"]
