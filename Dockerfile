@@ -1,4 +1,4 @@
-FROM node:alpine3.15 as module-stage
+FROM node:16-alpine as module-stage
 WORKDIR /app
 ENV PATH /app/node_modules/.bin:$PATH
 ENV NODE_ENV production
@@ -14,7 +14,7 @@ ENV NEXT_TELEMETRY_DEBUG=1
 RUN yarn install --force && yarn run build && rm -rf .next/cache
 
 
-FROM node:alpine3.15 as prod-stage
+FROM node:16-alpine as prod-stage
 ENV NODE_ENV production
 ENV PATH /app/node_modules/.bin:$PATH
 WORKDIR /app
