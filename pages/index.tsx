@@ -16,7 +16,7 @@ export default function Home({setLoadStart, loadStart}) {
     const [ shareObj, setShareObj] = useState({});
     useEffect(() => {
         const {
-            url = window.location.hre,
+            url = window.location.href,
             title = '车唧唧-汽车新势力，一起唧唧歪歪！', // 分享标题
             description = '车唧唧口号是汽车社区新势力，欢迎大家来到这里一起唧唧歪歪，有态度、更年轻、有个性的汽车发声根据地', // 分享描述,
             pic = `${window.location.origin}/favicon.jpg`, // 分享图标,
