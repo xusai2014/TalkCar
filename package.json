@@ -34,10 +34,10 @@
     "typescript": "^3.9.3"
   },
   "scripts": {
-    "dev": "./node_modules/.bin/next -p 3002",
+    "dev": "./node_modules/.bin/next dev -p 3002",
     "build": "./node_modules/.bin/next build",
-    "serve": "./node_modules/.bin/next start",
-    "start": "pm2 start ecosystem.config.js"
+    "serve": "./node_modules/.bin/next start -p 80",
+    "start": "./node_modules/.bin/next start -p 80"
   },
   "repository": {
     "type": "git"
