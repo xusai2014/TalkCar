@@ -6,7 +6,7 @@ import React, {useEffect, useState} from "react";
 import styles from './style.module.less';
 import { shareFunc } from '../../config/utils';
 
-export default ({data}) => {
+export default ({data = {}}:any) => {
     useEffect(()=>{
         const {
             t_desc = '',
