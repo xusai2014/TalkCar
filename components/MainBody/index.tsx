@@ -27,7 +27,7 @@ export default ({loadStart, setLoadStart, matchParam = {o_name:""}, setShareObj 
 
     function getMore() {
 
-        return axios.get(`${baseUrl}/api/article/list/page?page=${list.length / 20 + 1}&o_name=${matchParam.o_name}`, {
+        return axios.get(`${baseUrl}/api/article/list/page?page=${list.length / 20 + 1}&o_name=${matchParam.o_name}&t_system=1`, {
             withCredentials: true,
             headers: {
                 'Access-Control-Allow-Origin': '*'
